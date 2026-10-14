@@ -435,11 +435,17 @@
           <button onclick="goToToday()" class="touch-btn px-3 py-1.5 text-xs font-bold bg-slate-900 text-white rounded-lg hover:bg-slate-800">Today</button>
         </div>
 
-        <!-- Gemini API & NotebookLM Logging Hub Triggers -->
-        <div class="flex items-center gap-2">
-          <button onclick="openSyncModal()" class="touch-btn px-3 py-1.5 text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 rounded-xl hover:bg-indigo-100 flex items-center gap-1.5">
+        <!-- Gemini API, Visible Model Selector & NotebookLM Logging Hub Triggers -->
+        <div class="flex flex-wrap items-center gap-2">
+          <select id="headerModelSelect" onchange="changeGeminiModel(this.value)" class="touch-btn px-3 py-1.5 text-xs font-extrabold bg-indigo-50 text-indigo-900 border border-indigo-200 rounded-xl focus:outline-none" title="Select Gemini AI Model">
+            <option value="gemini-3.8-flash">🤖 Model: gemini-3.8-flash (Free)</option>
+            <option value="gemini-4-argon">🧠 Model: gemini-4-argon (4.0 Argon)</option>
+            <option value="gemini-3.6-flash">🚀 Model: gemini-3.6-flash (Free)</option>
+            <option value="gemini-2.5-flash">✨ Model: gemini-2.5-flash (Free)</option>
+          </select>
+          <button onclick="openSyncModal()" class="touch-btn px-3 py-1.5 text-xs font-bold bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 flex items-center gap-1.5">
             <span>📓</span> NotebookLM &amp; Gemini API
-            <span id="apiStatusDot" class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span id="apiStatusDot" class="w-2 h-2 rounded-full bg-emerald-400"></span>
           </button>
           <button onclick="toggleBaselineModal()" class="touch-btn px-3 py-1.5 text-xs font-bold bg-slate-100 text-slate-700 border border-slate-300 rounded-xl hover:bg-slate-200">
             ⚙️ Baseline
@@ -1387,11 +1393,19 @@
 
               <!-- Smart Calculator Breakdown Grid (Auto-filled by description or Gemini API, and manually editable) -->
               <div class="pt-2 border-t border-slate-200">
-                <div class="flex items-center justify-between mb-2">
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
                   <span class="text-xs font-extrabold text-slate-700">Calculated Nutrition Breakdown <span id="calcSourceTag" class="text-[11px] font-semibold text-emerald-700">(Auto-computed)</span></span>
-                  <button onclick="runGeminiSmartCalc()" class="px-2.5 py-1 text-[11px] font-extrabold bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
-                    ✨ Recalculate with Gemini AI
-                  </button>
+                  <div class="flex items-center gap-1.5">
+                    <select id="inlineModelSelect" onchange="changeGeminiModel(this.value)" class="px-2 py-1 text-[11px] font-bold bg-white border border-indigo-300 text-indigo-900 rounded-lg focus:outline-none">
+                      <option value="gemini-3.8-flash">⚡ gemini-3.8-flash</option>
+                      <option value="gemini-4-argon">🧠 gemini-4-argon</option>
+                      <option value="gemini-3.6-flash">🚀 gemini-3.6-flash</option>
+                      <option value="gemini-2.5-flash">✨ gemini-2.5-flash</option>
+                    </select>
+                    <button onclick="runGeminiSmartCalc()" class="px-2.5 py-1 text-[11px] font-extrabold bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                      ✨ Recalculate with Gemini AI
+                    </button>
+                  </div>
                 </div>
 
                 <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
@@ -1810,14 +1824,25 @@
           </div>
         </div>
 
-        <!-- Gemini API Key Input -->
-        <div class="p-4 rounded-xl bg-indigo-50/50 border border-indigo-200 space-y-2">
-          <label class="block text-xs font-extrabold text-indigo-950">Gemini API Key (Optional — Enables Live `gemini-2.5-flash` Meal &amp; Audit Calls)</label>
-          <div class="flex gap-2">
-            <input type="password" id="geminiApiKeyInput" placeholder="AIzaSy... (Saved locally on your iPad)" class="flex-1 px-3 py-2 text-xs bg-white border border-indigo-300 rounded-xl focus:outline-none">
-            <button onclick="saveGeminiApiKey()" class="px-4 py-2 text-xs font-extrabold bg-indigo-600 text-white rounded-xl hover:bg-indigo-700">Save Key</button>
+        <!-- Gemini API Key & Model Selector (Gemini 3.8 Flash Free Tier + Gemini 4 Argon Support) -->
+        <div class="p-4 rounded-xl bg-indigo-50/50 border border-indigo-200 space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <label class="block text-xs font-extrabold text-indigo-950">Gemini API Key &amp; Model (`gemini-3.8-flash` Free Tier / `gemini-4-argon`)</label>
+            <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener" class="px-2.5 py-1 text-[11px] font-extrabold bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">🔑 Get Free Key in AI Studio ↗</a>
           </div>
-          <p class="text-[11px] text-indigo-800">Works immediately without a key using the built-in NotebookLM Food &amp; PPL Intelligence Engine. Adding a Gemini API key enables live LLM macro estimation and deep coaching critiques.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <input type="password" id="geminiApiKeyInput" placeholder="Paste AIzaSy... key from aistudio.google.com/apikey" class="w-full px-3 py-2 text-xs bg-white border border-indigo-300 rounded-xl focus:outline-none">
+            <div class="flex gap-2">
+              <select id="geminiModelSelect" class="flex-1 px-3 py-2 text-xs font-bold bg-white border border-indigo-300 rounded-xl focus:outline-none">
+                <option value="gemini-3.8-flash">⚡ gemini-3.8-flash (Best Free Tier Key)</option>
+                <option value="gemini-4-argon">🧠 gemini-4-argon (4.0 Argon • Paid API Tier)</option>
+                <option value="gemini-3.6-flash">🚀 gemini-3.6-flash (Free Tier)</option>
+                <option value="gemini-2.5-flash">✨ gemini-2.5-flash (Legacy Free Tier)</option>
+              </select>
+              <button onclick="saveGeminiApiKey()" class="px-4 py-2 text-xs font-extrabold bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 whitespace-nowrap">Save Key</button>
+            </div>
+          </div>
+          <p class="text-[11px] text-indigo-800"><strong>Best Key Recommendation:</strong> Grab a free-tier key from <strong>aistudio.google.com/apikey</strong> and use <code>gemini-3.8-flash</code> (100% free input &amp; output tokens). If you select <code>gemini-4-argon</code> on a free key, the app will try 4.0 Argon first and automatically fall back to <code>gemini-3.8-flash</code> if your key is on the free tier.</p>
         </div>
 
         <!-- Formatted NotebookLM Export Packet -->
@@ -2125,6 +2150,7 @@
         bodyWeightKg: 103     // 6'2", 103 kg profile from Gym Buddy notebook
       },
       geminiApiKey: "",
+      geminiModel: "gemini-3.8-flash",
       days: {},
       punishments: []
     };
@@ -2722,16 +2748,28 @@
         return;
       }
       try {
-        document.getElementById("calcSourceTag").textContent = "(Querying Gemini API...)";
+        const chosenModel = state.geminiModel || "gemini-3.8-flash";
+        document.getElementById("calcSourceTag").textContent = `(Querying ${chosenModel}...)`;
         const prompt = `Return ONLY a valid JSON object estimating the nutrition for: "${desc}". Fields: {"cals": number, "pro": number, "carb": number, "fat": number, "ml": number, "sod": number, "pot": number, "mag": number, "fib": number, "cre": number, "type": "food"|"liquid"|"alcohol"|"water_combo"}`;
-        const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(state.geminiApiKey)}`, {
+        const reqBody = JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { responseMimeType: "application/json" }
+        });
+        let usedModel = chosenModel;
+        let res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${usedModel}:generateContent?key=${encodeURIComponent(state.geminiApiKey)}`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-            generationConfig: { responseMimeType: "application/json" }
-          })
+          body: reqBody
         });
+        // If user selected gemini-4-argon on a Free Tier key, auto-fallback to gemini-3.8-flash
+        if (!res.ok && usedModel !== "gemini-3.8-flash") {
+          usedModel = "gemini-3.8-flash";
+          res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${usedModel}:generateContent?key=${encodeURIComponent(state.geminiApiKey)}`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: reqBody
+          });
+        }
         const data = await res.json();
         const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
         if (text) {
@@ -2747,8 +2785,8 @@
           document.getElementById("calcFib").value = (parsed.fib || 0).toFixed(1);
           document.getElementById("calcCre").value = (parsed.cre || 0).toFixed(1);
           if (parsed.type) document.getElementById("mealTypeInput").value = parsed.type;
-          document.getElementById("calcSourceTag").textContent = "(Verified by Gemini 2.5 Flash)";
-          showToast("Recalculated macros & electrolytes with Gemini API", "✨");
+          document.getElementById("calcSourceTag").textContent = `(Verified by ${usedModel})`;
+          showToast(`Recalculated macros & electrolytes with ${usedModel}`, "✨");
         }
       } catch (err) {
         document.getElementById("calcSourceTag").textContent = "(Notebook Engine Fallback)";
@@ -3652,6 +3690,8 @@
 
     function openSyncModal() {
       document.getElementById("geminiApiKeyInput").value = state.geminiApiKey || "";
+      const modSel = document.getElementById("geminiModelSelect");
+      if (modSel) modSel.value = state.geminiModel || "gemini-3.8-flash";
       document.getElementById("notebookExportTextarea").value = buildNotebookSyncPacket();
       const modal = document.getElementById("syncModal");
       modal.classList.remove("hidden");
@@ -3664,10 +3704,28 @@
       modal.classList.remove("flex");
     }
 
+    function syncModelSelectors() {
+      const m = state.geminiModel || "gemini-3.8-flash";
+      ["headerModelSelect", "inlineModelSelect", "geminiModelSelect"].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.value = m;
+      });
+    }
+
+    function changeGeminiModel(newModel) {
+      state.geminiModel = newModel || "gemini-3.8-flash";
+      syncModelSelectors();
+      saveState();
+      showToast(`Switched AI Model to ${state.geminiModel}`, "🤖");
+    }
+
     function saveGeminiApiKey() {
       state.geminiApiKey = document.getElementById("geminiApiKeyInput").value.trim();
+      const modSel = document.getElementById("geminiModelSelect");
+      if (modSel) state.geminiModel = modSel.value || "gemini-3.8-flash";
+      syncModelSelectors();
       saveState();
-      showToast(state.geminiApiKey ? "Saved Gemini API Key locally!" : "Cleared Gemini API Key (Using Built-in Notebook Engine)");
+      showToast(state.geminiApiKey ? `Saved API Key (${state.geminiModel}) locally!` : "Cleared Gemini API Key (Using Built-in Notebook Engine)");
     }
 
     function downloadStandaloneHtmlForIpad() {
@@ -3798,6 +3856,7 @@
         document.getElementById("retroBannerDate").textContent = activeDate;
       }
 
+      syncModelSelectors();
       renderWorkoutSection();
       renderCalorieSection();
       renderReportSection();
