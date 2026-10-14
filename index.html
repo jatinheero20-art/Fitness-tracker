@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en" style="--day-bg: #f0f9ff; --day-bg-2: #e0f2fe; --day-accent: #0284c7; --day-accent-hover: #0369a1; --day-accent-soft: #e0f2fe; --day-border: #bae6fd; --day-text: #0c4a6e; --day-glow: rgba(2, 132, 199, 0.16);"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>NotebookLM &amp; Gemini iPad Fitness OS — 6-Day PPL &amp; Smart Calorie Tracker</title>
@@ -32,6 +32,82 @@
     table { border-collapse: collapse; width: 100%; }
     ul { margin: 0; padding: 0; }
     h1, h2, h3, h4, p { margin: 0; }
+
+    
+    :root {
+      --day-bg: #eef2ff;
+      --day-bg-2: #f8fafc;
+      --day-accent: #4f46e5;
+      --day-accent-hover: #4338ca;
+      --day-accent-soft: #e0e7ff;
+      --day-border: #c7d2fe;
+      --day-text: #1e1b4b;
+      --day-glow: rgba(79, 70, 229, 0.14);
+    }
+    html, body {
+      background: linear-gradient(165deg, var(--day-bg) 0%, var(--day-bg-2) 55%, #f1f5f9 100%) !important;
+      transition: background 0.35s ease;
+    }
+    .ipad-card {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--day-border);
+      border-radius: 1.5rem;
+      padding: 1.5rem !important;
+      box-shadow: 0 10px 28px -6px var(--day-glow), 0 2px 8px -2px rgba(15, 23, 42, 0.04);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .nav-btn-active {
+      background-color: var(--day-accent) !important;
+      color: #ffffff !important;
+      border: 1px solid var(--day-accent) !important;
+      box-shadow: 0 6px 16px var(--day-glow);
+    }
+    .theme-btn {
+      background-color: var(--day-accent) !important;
+      color: #ffffff !important;
+      box-shadow: 0 4px 12px var(--day-glow);
+    }
+    .theme-btn:hover {
+      background-color: var(--day-accent-hover) !important;
+    }
+    .theme-pill {
+      background-color: var(--day-accent-soft) !important;
+      color: var(--day-text) !important;
+      border: 1px solid var(--day-border) !important;
+    }
+    .stepper-btn {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 0.75rem;
+      background-color: #f8fafc;
+      border: 1px solid #cbd5e1;
+      font-weight: 800;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #0f172a;
+      transition: all 0.12s ease;
+      user-select: none;
+    }
+    .stepper-btn:hover {
+      background-color: var(--day-accent-soft);
+      border-color: var(--day-accent);
+      color: var(--day-text);
+    }
+    .stepper-btn:active {
+      transform: scale(0.94);
+    }
+    .subtab-active {
+      background-color: var(--day-accent) !important;
+      color: #ffffff !important;
+      box-shadow: 0 6px 16px var(--day-glow);
+    }
+    .subtab-inactive {
+      background-color: transparent !important;
+      color: #475569 !important;
+    }
 
     /* Custom Component Classes — Spacious iPad Pro Layout */
     .ipad-card {
@@ -396,9 +472,9 @@
 <body class="min-h-screen pb-20">
 
   <!-- Toast Notification Banner -->
-  <div id="toastBanner" class="fixed bottom-5 right-5 z-50 hidden max-w-md bg-slate-900 text-white px-4 py-3 rounded-xl shadow-2xl border border-slate-700 flex items-center gap-3 text-sm font-medium">
+  <div id="toastBanner" class="fixed bottom-5 right-5 z-50 max-w-md bg-slate-900 text-white px-4 py-3 rounded-xl shadow-2xl border border-slate-700 flex items-center gap-3 text-sm font-medium hidden">
     <span id="toastIcon" class="text-emerald-400 font-bold">✓</span>
-    <span id="toastText">Saved</span>
+    <span id="toastText">Preacher Curl Machine: Switched to 🔢 Weight × Reps Mode</span>
   </div>
 
   <!-- Retrospective Mode Sticky Alert Bar -->
@@ -415,15 +491,12 @@
       <!-- Top Row: Title, Date Switcher, NotebookLM / Gemini Sync Controls -->
       <div class="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-100">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-extrabold text-sm tracking-tighter shadow-sm">
+          <div id="brandLogoBox" class="w-10 h-10 rounded-2xl theme-btn text-white flex items-center justify-center font-extrabold text-sm tracking-tighter">
             PPL
           </div>
-          <div>
-            <div class="flex items-center gap-2">
-              <h1 class="text-base sm:text-lg font-extrabold tracking-tight text-slate-900">NOTEBOOKLM FITNESS OS</h1>
-              <span class="px-2 py-0.5 text-[11px] font-bold bg-blue-50 text-blue-700 border border-blue-200 rounded-full">6'2" • 103 kg Baseline</span>
-            </div>
-            <p class="text-xs text-slate-500">Calendar Month Audit (Oct 15–31 Starter • Full 1st–Last Day from Nov) • 6-Day PPL • 5% Buffer</p>
+          <div class="flex items-center gap-2.5">
+            <h1 class="text-base sm:text-lg font-extrabold tracking-tight text-slate-900">FITNESS OS</h1>
+            <span id="dayTintBadge" class="px-2.5 py-0.5 text-xs font-extrabold rounded-full theme-pill">Fri • Pull B</span>
           </div>
         </div>
 
@@ -455,12 +528,12 @@
 
       <!-- Top 3-Section Button Dashboard -->
       <div class="grid grid-cols-3 gap-2.5 sm:gap-4 pt-3">
-        <button id="nav-workout" onclick="switchSection('workout')" class="touch-btn py-3 px-3 sm:px-5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 nav-btn-active">
+        <button id="nav-workout" onclick="switchSection('workout')" class="touch-btn py-3 px-3 sm:px-5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 nav-btn-active relative">
           <span>🏋️</span>
           <span>1. Workout (6-Day PPL &amp; Cardio)</span>
           <span id="navWorkoutPill" class="hidden sm:inline-block px-2 py-0.5 text-[11px] rounded-full bg-white/20 text-white">0/8 sets</span>
         </button>
-        <button id="nav-calories" onclick="switchSection('calories')" class="touch-btn py-3 px-3 sm:px-5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 nav-btn-inactive">
+        <button id="nav-calories" onclick="switchSection('calories')" class="touch-btn py-3 px-3 sm:px-5 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 nav-btn-inactive relative">
           <span>🥗</span>
           <span>2. Calorie &amp; Liquid Tracker</span>
           <span id="navCalPill" class="hidden sm:inline-block px-2 py-0.5 text-[11px] rounded-full bg-slate-100 text-slate-700">0/2200 kcal</span>
@@ -480,715 +553,769 @@
     <!-- ========================================================================= -->
     <!-- SECTION 1: WORKOUT (6-DAY PPL + CUSTOM KG/LBS PER SET + CARDIO CONSOLE)   -->
     <!-- ========================================================================= -->
-    <section id="section-workout" class="space-y-6">
+    <section id="section-workout" class="space-y-5">
 
-      <!-- Workout Split Selector & Notebook Joint Armor Banner -->
-      <div class="ipad-card p-5">
-        <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-200">
-          <div>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-extrabold uppercase tracking-wider text-indigo-600">Gym Buddy Notebook Split</span>
-              <span id="workoutDayBadge" class="px-2 py-0.5 text-[11px] font-bold bg-slate-100 text-slate-700 rounded-md">Thursday • Day 4</span>
-            </div>
-            <h2 id="pplDayTitle" class="text-xl font-extrabold text-slate-900 mt-0.5">Push B — Shoulder Dominant, Dynamic Chest &amp; Triceps</h2>
-            <p id="pplCoachCue" class="text-xs text-slate-600 mt-1">Prioritize vertical delt drive while fresh. Avoid stacking redundant straight-rod pushdowns if left elbow feels tight; favor rope or single-arm neutral cable.</p>
+      <!-- Top Control Card: Day Split Picker + Live Telemetry + Big Page Switcher (Weights ⇄ Cardio) -->
+      <div class="ipad-card">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <span id="workoutDayBadge" class="px-3 py-1 text-xs font-extrabold rounded-xl theme-pill">Friday • Day 5</span>
+            <h2 id="pplDayTitle" class="text-xl font-extrabold text-slate-900">Pull B — Back Width, Biceps &amp; Forearms</h2>
+            <span id="pplCoachCue" class="hidden">Focus on lat taper, unilateral anti-rotation, and inner wrist flexors (avoid reverse-grip wrist curls to failure to protect lateral epicondyle).</span>
           </div>
 
-          <!-- 6-Day PPL Day Switcher Buttons -->
-          <div class="flex flex-wrap items-center gap-1.5">
-            <select id="pplSelector" onchange="switchPplSplit(this.value)" class="touch-btn px-3 py-2 text-xs sm:text-sm font-bold bg-slate-900 text-white rounded-xl focus:outline-none">
-              <option value="Push A">Mon • Day 1: Push A (Chest/Delt/Tri)</option>
-              <option value="Pull A">Tue • Day 2: Pull A (Back Thickness/Bi/Rear Delt)</option>
-              <option value="Legs A">Wed • Day 3: Legs A (Quad Dominant + Core)</option>
-              <option value="Push B">Thu • Day 4: Push B (Shoulder Dominant/Chest/Tri)</option>
-              <option value="Pull B">Fri • Day 5: Pull B (Back Width/Bi/Forearms)</option>
-              <option value="Legs B">Sat • Day 6: Legs B (Posterior Chain/RDL + Core)</option>
-              <option value="Rest">Sun • Day 7: Active Recovery &amp; Mobility</option>
+          <div class="flex flex-wrap items-center gap-2">
+            <select id="pplSelector" onchange="switchPplSplit(this.value)" class="touch-btn px-3.5 py-2 text-xs sm:text-sm font-extrabold rounded-xl theme-btn focus:outline-none">
+              <option value="Push A">Mon • Push A (Chest/Delt/Tri)</option>
+              <option value="Pull A">Tue • Pull A (Back/Bi/Rear Delt)</option>
+              <option value="Legs A">Wed • Legs A (Quads + Core)</option>
+              <option value="Push B">Thu • Push B (Shoulders/Chest/Tri)</option>
+              <option value="Pull B">Fri • Pull B (Lat Width/Bi/Grip)</option>
+              <option value="Legs B">Sat • Legs B (Posterior/RDL + Core)</option>
+              <option value="Rest">Sun • Rest &amp; Mobility</option>
             </select>
-            <button onclick="expandAllPrescribedSets()" class="touch-btn px-3 py-2 text-xs font-bold bg-slate-100 text-slate-800 border border-slate-300 rounded-xl hover:bg-slate-200" title="Expand all exercises from 1 default set to full 3-4 notebook sets">
-              ⚡ Expand to Full 3–4 Sets
+            <button onclick="expandAllPrescribedSets()" class="touch-btn px-3.5 py-2 text-xs font-extrabold bg-slate-100 text-slate-800 border border-slate-300 rounded-xl hover:bg-slate-200">
+              ⚡ Full 3–4 Sets
             </button>
-            <button onclick="resetTodayWorkoutToDefault()" class="touch-btn px-3 py-2 text-xs font-bold bg-white text-slate-600 border border-slate-200 rounded-xl hover:bg-slate-50" title="Reset all exercises to 1 default set">
-              ↺ 1-Set Default
+            <button onclick="resetTodayWorkoutToDefault()" class="touch-btn px-3 py-2 text-xs font-bold bg-white text-slate-600 border border-slate-200 rounded-xl hover:bg-slate-50">
+              ↺ 1-Set
+            </button>
+            <button onclick="copyNotebookWorkoutLog()" class="touch-btn px-3.5 py-2 text-xs font-extrabold theme-pill rounded-xl">
+              📋 Copy Log
             </button>
           </div>
         </div>
 
-        <!-- Live Workout Session Telemetry Strip -->
+        <!-- Compact 4-Metric Telemetry Strip -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
-          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-            <span class="text-[11px] font-bold uppercase text-slate-400">Sets Logged</span>
+          <div class="p-3 rounded-xl bg-slate-50/70 border border-slate-200">
+            <span class="text-[10px] font-extrabold uppercase text-slate-400">Sets Done</span>
             <p class="text-lg font-extrabold text-slate-900 mt-0.5"><span id="statSetsDone">0</span> / <span id="statSetsTotal">8</span></p>
           </div>
-          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-            <span class="text-[11px] font-bold uppercase text-slate-400">Total Volume (Eq. kg / lbs)</span>
+          <div class="p-3 rounded-xl bg-slate-50/70 border border-slate-200">
+            <span class="text-[10px] font-extrabold uppercase text-slate-400">Volume</span>
             <p class="text-lg font-extrabold text-slate-900 mt-0.5"><span id="statVolKg">0</span> kg <span class="text-xs font-semibold text-slate-500">(<span id="statVolLbs">0</span> lbs)</span></p>
           </div>
-          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
-            <span class="text-[11px] font-bold uppercase text-slate-400">Cardio Session</span>
+          <div class="p-3 rounded-xl bg-slate-50/70 border border-slate-200">
+            <span class="text-[10px] font-extrabold uppercase text-slate-400">Cardio</span>
             <p class="text-lg font-extrabold text-blue-700 mt-0.5" id="statCardioSummary">0 mins (0 kcal)</p>
           </div>
-          <div class="p-3 rounded-xl bg-emerald-50/70 border border-emerald-200">
-            <span class="text-[11px] font-bold uppercase text-emerald-700">Calibrated Net Burn (103kg)</span>
+          <div class="p-3 rounded-xl bg-emerald-50/60 border border-emerald-200">
+            <span class="text-[10px] font-extrabold uppercase text-emerald-700">Active Burn</span>
             <p class="text-lg font-extrabold text-emerald-900 mt-0.5"><span id="statNetBurn">0</span> kcal</p>
           </div>
         </div>
-      </div>
 
-      <!-- Two-Column Layout: Left = PPL Exercises (7 cols) | Right = Cardio Setup Console (5 cols) -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-
-        <!-- Left: 6-Day PPL Exercise List (1 set default, + button, independent kg/lbs toggle per set) -->
-        <div class="lg:col-span-7 space-y-4">
-          <div class="ipad-card p-5">
-            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-              <div>
-                <h3 class="text-base font-extrabold text-slate-900">PPL Working Sets Ledger</h3>
-                <p class="text-xs text-slate-500">Starts with 1 set by default • Tap <strong class="text-slate-800">+ Add Set</strong> to add sets • Toggle <strong class="text-slate-800">kg / lbs</strong> per set or exercise</p>
-              </div>
-              <button onclick="copyNotebookWorkoutLog()" class="touch-btn px-3 py-1.5 text-xs font-bold bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
-                📋 Copy for "Gym Buddy" Notebook
-              </button>
-            </div>
-
-            <div id="workoutExercisesContainer" class="space-y-4">
-        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-          <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="w-6 h-6 rounded-md bg-slate-900 text-white text-xs font-extrabold flex items-center justify-center">1</span>
-                <h4 class="text-sm font-extrabold text-slate-900">Seated Overhead Dumbbell Shoulder Press</h4>
-                <span class="px-2 py-0.5 text-[10px] font-bold bg-indigo-50 text-indigo-700 rounded border border-indigo-200">Notebook Target: 4×8–10</span>
-              </div>
-              <p class="text-[11px] text-slate-500 mt-0.5 ml-8">Primary compound vertical shoulder drive</p>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <button onclick="toggleExerciseAllUnits(0)" class="touch-btn px-2.5 py-1 text-xs font-bold bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-100" title="Toggle all sets of this exercise between kg and lbs">
-                All: KG ⇄
-              </button>
-              <button onclick="addSetToExercise(0)" class="touch-btn px-3 py-1 text-xs font-extrabold bg-slate-900 text-white rounded-lg hover:bg-slate-800">
-                + Add Set
-              </button>
-            </div>
-          </div>
-
-          <div class="space-y-2">
-            
-              <div class="flex flex-wrap sm:flex-nowrap items-center gap-2 text-xs bg-white px-3 py-2 rounded-xl border border-slate-200">
-                <span class="font-extrabold text-slate-500 w-14">Set 1</span>
-
-                <!-- Custom Weight Input + Separate KG / LBS Toggle Button per Set -->
-                <div class="flex items-center gap-1">
-                  <input type="number" step="0.5" value="20" onchange="updateSetValue(0, 0, 'w', this.value)" class="w-20 px-2 py-1.5 border border-slate-300 rounded-lg text-center font-extrabold text-slate-900 text-sm focus:outline-none focus:border-slate-900">
-                  <button onclick="toggleSetUnit(0, 0)" class="px-2.5 py-1.5 rounded-lg font-extrabold text-xs border transition bg-blue-100 text-blue-900 border-blue-300" title="Tap to toggle kg / lbs for this set">
-                    kg
-                  </button>
-                </div>
-
-                <span class="text-slate-400 font-bold">×</span>
-
-                <!-- Rep Input for Each Set -->
-                <div class="flex items-center gap-1">
-                  <input type="number" value="10" onchange="updateSetValue(0, 0, 'r', this.value)" class="w-16 px-2 py-1.5 border border-slate-300 rounded-lg text-center font-extrabold text-slate-900 text-sm focus:outline-none focus:border-slate-900">
-                  <span class="text-slate-500 font-semibold">reps</span>
-                </div>
-
-                <label class="ml-auto flex items-center gap-2 cursor-pointer select-none px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-bold">
-                  <input type="checkbox" onchange="updateSetValue(0, 0, 'done', this.checked)" class="rounded text-slate-900">
-                  <span>Mark Set</span>
-                </label>
-
-                <button onclick="removeSetFromExercise(0, 0)" class="text-slate-300 hover:text-red-600 font-bold px-1.5" title="Remove Set">✕</button>
-              </div>
-            
-          </div>
-        </div>
-      
-        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-          <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="w-6 h-6 rounded-md bg-slate-900 text-white text-xs font-extrabold flex items-center justify-center">2</span>
-                <h4 class="text-sm font-extrabold text-slate-900">Smith Machine Flat / Incline Dumbbell Press</h4>
-                <span class="px-2 py-0.5 text-[10px] font-bold bg-indigo-50 text-indigo-700 rounded border border-indigo-200">Notebook Target: 3×10–12</span>
-              </div>
-              <p class="text-[11px] text-slate-500 mt-0.5 ml-8">20kg/side in notebook log; controlled bar path</p>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <button onclick="toggleExerciseAllUnits(1)" class="touch-btn px-2.5 py-1 text-xs font-bold bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-100" title="Toggle all sets of this exercise between kg and lbs">
-                All: KG ⇄
-              </button>
-              <button onclick="addSetToExercise(1)" class="touch-btn px-3 py-1 text-xs font-extrabold bg-slate-900 text-white rounded-lg hover:bg-slate-800">
-                + Add Set
-              </button>
-            </div>
-          </div>
-
-          <div class="space-y-2">
-            
-              <div class="flex flex-wrap sm:flex-nowrap items-center gap-2 text-xs bg-white px-3 py-2 rounded-xl border border-slate-200">
-                <span class="font-extrabold text-slate-500 w-14">Set 1</span>
-
-                <!-- Custom Weight Input + Separate KG / LBS Toggle Button per Set -->
-                <div class="flex items-center gap-1">
-                  <input type="number" step="0.5" value="20" onchange="updateSetValue(1, 0, 'w', this.value)" class="w-20 px-2 py-1.5 border border-slate-300 rounded-lg text-center font-extrabold text-slate-900 text-sm focus:outline-none focus:border-slate-900">
-                  <button onclick="toggleSetUnit(1, 0)" class="px-2.5 py-1.5 rounded-lg font-extrabold text-xs border transition bg-blue-100 text-blue-900 border-blue-300" title="Tap to toggle kg / lbs for this set">
-                    kg
-                  </button>
-                </div>
-
-                <span class="text-slate-400 font-bold">×</span>
-
-                <!-- Rep Input for Each Set -->
-                <div class="flex items-center gap-1">
-                  <input type="number" value="12" onchange="updateSetValue(1, 0, 'r', this.value)" class="w-16 px-2 py-1.5 border border-slate-300 rounded-lg text-center font-extrabold text-slate-900 text-sm focus:outline-none focus:border-slate-900">
-                  <span class="text-slate-500 font-semibold">reps</span>
-                </div>
-
-                <label class="ml-auto flex items-center gap-2 cursor-pointer select-none px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-bold">
-                  <input type="checkbox" onchange="updateSetValue(1, 0, 'done', this.checked)" class="rounded text-slate-900">
-                  <span>Mark Set</span>
-                </label>
-
-                <button onclick="removeSetFromExercise(1, 0)" class="text-slate-300 hover:text-red-600 font-bold px-1.5" title="Remove Set">✕</button>
-              </div>
-            
-          </div>
-        </div>
-      
-        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-          <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="w-6 h-6 rounded-md bg-slate-900 text-white text-xs font-extrabold flex items-center justify-center">3</span>
-                <h4 class="text-sm font-extrabold text-slate-900">Cable Lateral Raises / Seated DB Lateral Raises</h4>
-                <span class="px-2 py-0.5 text-[10px] font-bold bg-indigo-50 text-indigo-700 rounded border border-indigo-200">Notebook Target: 4×12–15</span>
-              </div>
-              <p class="text-[11px] text-slate-500 mt-0.5 ml-8">Continuous tension through full abduction arc</p>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <button onclick="toggleExerciseAllUnits(2)" class="touch-btn px-2.5 py-1 text-xs font-bold bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-100" title="Toggle all sets of this exercise between kg and lbs">
-                All: KG ⇄
-              </button>
-              <button onclick="addSetToExercise(2)" class="touch-btn px-3 py-1 text-xs font-extrabold bg-slate-900 text-white rounded-lg hover:bg-slate-800">
-                + Add Set
-              </button>
-            </div>
-          </div>
-
-          <div class="space-y-2">
-            
-              <div class="flex flex-wrap sm:flex-nowrap items-center gap-2 text-xs bg-white px-3 py-2 rounded-xl border border-slate-200">
-                <span class="font-extrabold text-slate-500 w-14">Set 1</span>
-
-                <!-- Custom Weight Input + Separate KG / LBS Toggle Button per Set -->
-                <div class="flex items-center gap-1">
-                  <input type="number" step="0.5" value="10" onchange="updateSetValue(2, 0, 'w', this.value)" class="w-20 px-2 py-1.5 border border-slate-300 rounded-lg text-center font-extrabold text-slate-900 text-sm focus:outline-none focus:border-slate-900">
-                  <button onclick="toggleSetUnit(2, 0)" class="px-2.5 py-1.5 rounded-lg font-extrabold text-xs border transition bg-blue-100 text-blue-900 border-blue-300" title="Tap to toggle kg / lbs for this set">
-                    kg
-                  </button>
-                </div>
-
-                <span class="text-slate-400 font-bold">×</span>
-
-                <!-- Rep Input for Each Set -->
-                <div class="flex items-center gap-1">
-                  <input type="number" value="15" onchange="updateSetValue(2, 0, 'r', this.value)" class="w-16 px-2 py-1.5 border border-slate-300 rounded-lg text-center font-extrabold text-slate-900 text-sm focus:outline-none focus:border-slate-900">
-                  <span class="text-slate-500 font-semibold">reps</span>
-                </div>
-
-                <label class="ml-auto flex items-center gap-2 cursor-pointer select-none px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-bold">
-                  <input type="checkbox" onchange="updateSetValue(2, 0, 'done', this.checked)" class="rounded text-slate-900">
-                  <span>Mark Set</span>
-                </label>
-
-                <button onclick="removeSetFromExercise(2, 0)" class="text-slate-300 hover:text-red-600 font-bold px-1.5" title="Remove Set">✕</button>
-              </div>
-            
-          </div>
-        </div>
-      
-        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-          <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="w-6 h-6 rounded-md bg-slate-900 text-white text-xs font-extrabold flex items-center justify-center">4</span>
-                <h4 class="text-sm font-extrabold text-slate-900">Cable Crossover Chest Flyes</h4>
-                <span class="px-2 py-0.5 text-[10px] font-bold bg-indigo-50 text-indigo-700 rounded border border-indigo-200">Notebook Target: 3×12–15</span>
-              </div>
-              <p class="text-[11px] text-slate-500 mt-0.5 ml-8">70-90 lbs in notebook log; chest squeeze &amp; pump</p>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <button onclick="toggleExerciseAllUnits(3)" class="touch-btn px-2.5 py-1 text-xs font-bold bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-100" title="Toggle all sets of this exercise between kg and lbs">
-                All: LBS ⇄
-              </button>
-              <button onclick="addSetToExercise(3)" class="touch-btn px-3 py-1 text-xs font-extrabold bg-slate-900 text-white rounded-lg hover:bg-slate-800">
-                + Add Set
-              </button>
-            </div>
-          </div>
-
-          <div class="space-y-2">
-            
-              <div class="flex flex-wrap sm:flex-nowrap items-center gap-2 text-xs bg-white px-3 py-2 rounded-xl border border-slate-200">
-                <span class="font-extrabold text-slate-500 w-14">Set 1</span>
-
-                <!-- Custom Weight Input + Separate KG / LBS Toggle Button per Set -->
-                <div class="flex items-center gap-1">
-                  <input type="number" step="0.5" value="70" onchange="updateSetValue(3, 0, 'w', this.value)" class="w-20 px-2 py-1.5 border border-slate-300 rounded-lg text-center font-extrabold text-slate-900 text-sm focus:outline-none focus:border-slate-900">
-                  <button onclick="toggleSetUnit(3, 0)" class="px-2.5 py-1.5 rounded-lg font-extrabold text-xs border transition bg-amber-100 text-amber-900 border-amber-300" title="Tap to toggle kg / lbs for this set">
-                    lbs
-                  </button>
-                </div>
-
-                <span class="text-slate-400 font-bold">×</span>
-
-                <!-- Rep Input for Each Set -->
-                <div class="flex items-center gap-1">
-                  <input type="number" value="15" onchange="updateSetValue(3, 0, 'r', this.value)" class="w-16 px-2 py-1.5 border border-slate-300 rounded-lg text-center font-extrabold text-slate-900 text-sm focus:outline-none focus:border-slate-900">
-                  <span class="text-slate-500 font-semibold">reps</span>
-                </div>
-
-                <label class="ml-auto flex items-center gap-2 cursor-pointer select-none px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-bold">
-                  <input type="checkbox" onchange="updateSetValue(3, 0, 'done', this.checked)" class="rounded text-slate-900">
-                  <span>Mark Set</span>
-                </label>
-
-                <button onclick="removeSetFromExercise(3, 0)" class="text-slate-300 hover:text-red-600 font-bold px-1.5" title="Remove Set">✕</button>
-              </div>
-            
-          </div>
-        </div>
-      
-        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-          <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="w-6 h-6 rounded-md bg-slate-900 text-white text-xs font-extrabold flex items-center justify-center">5</span>
-                <h4 class="text-sm font-extrabold text-slate-900">Forward Chest Press Machine</h4>
-                <span class="px-2 py-0.5 text-[10px] font-bold bg-indigo-50 text-indigo-700 rounded border border-indigo-200">Notebook Target: 3×12–15</span>
-              </div>
-              <p class="text-[11px] text-slate-500 mt-0.5 ml-8">30kg/side tension finisher</p>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <button onclick="toggleExerciseAllUnits(4)" class="touch-btn px-2.5 py-1 text-xs font-bold bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-100" title="Toggle all sets of this exercise between kg and lbs">
-                All: KG ⇄
-              </button>
-              <button onclick="addSetToExercise(4)" class="touch-btn px-3 py-1 text-xs font-extrabold bg-slate-900 text-white rounded-lg hover:bg-slate-800">
-                + Add Set
-              </button>
-            </div>
-          </div>
-
-          <div class="space-y-2">
-            
-              <div class="flex flex-wrap sm:flex-nowrap items-center gap-2 text-xs bg-white px-3 py-2 rounded-xl border border-slate-200">
-                <span class="font-extrabold text-slate-500 w-14">Set 1</span>
-
-                <!-- Custom Weight Input + Separate KG / LBS Toggle Button per Set -->
-                <div class="flex items-center gap-1">
-                  <input type="number" step="0.5" value="30" onchange="updateSetValue(4, 0, 'w', this.value)" class="w-20 px-2 py-1.5 border border-slate-300 rounded-lg text-center font-extrabold text-slate-900 text-sm focus:outline-none focus:border-slate-900">
-                  <button onclick="toggleSetUnit(4, 0)" class="px-2.5 py-1.5 rounded-lg font-extrabold text-xs border transition bg-blue-100 text-blue-900 border-blue-300" title="Tap to toggle kg / lbs for this set">
-                    kg
-                  </button>
-                </div>
-
-                <span class="text-slate-400 font-bold">×</span>
-
-                <!-- Rep Input for Each Set -->
-                <div class="flex items-center gap-1">
-                  <input type="number" value="15" onchange="updateSetValue(4, 0, 'r', this.value)" class="w-16 px-2 py-1.5 border border-slate-300 rounded-lg text-center font-extrabold text-slate-900 text-sm focus:outline-none focus:border-slate-900">
-                  <span class="text-slate-500 font-semibold">reps</span>
-                </div>
-
-                <label class="ml-auto flex items-center gap-2 cursor-pointer select-none px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-bold">
-                  <input type="checkbox" onchange="updateSetValue(4, 0, 'done', this.checked)" class="rounded text-slate-900">
-                  <span>Mark Set</span>
-                </label>
-
-                <button onclick="removeSetFromExercise(4, 0)" class="text-slate-300 hover:text-red-600 font-bold px-1.5" title="Remove Set">✕</button>
-              </div>
-            
-          </div>
-        </div>
-      
-        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-          <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="w-6 h-6 rounded-md bg-slate-900 text-white text-xs font-extrabold flex items-center justify-center">6</span>
-                <h4 class="text-sm font-extrabold text-slate-900">Standing / Seated Two-Arm Overhead DB Extension</h4>
-                <span class="px-2 py-0.5 text-[10px] font-bold bg-indigo-50 text-indigo-700 rounded border border-indigo-200">Notebook Target: 3×12–15</span>
-              </div>
-              <p class="text-[11px] text-slate-500 mt-0.5 ml-8">15kg in notebook log; long-head triceps stretch</p>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <button onclick="toggleExerciseAllUnits(5)" class="touch-btn px-2.5 py-1 text-xs font-bold bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-100" title="Toggle all sets of this exercise between kg and lbs">
-                All: KG ⇄
-              </button>
-              <button onclick="addSetToExercise(5)" class="touch-btn px-3 py-1 text-xs font-extrabold bg-slate-900 text-white rounded-lg hover:bg-slate-800">
-                + Add Set
-              </button>
-            </div>
-          </div>
-
-          <div class="space-y-2">
-            
-              <div class="flex flex-wrap sm:flex-nowrap items-center gap-2 text-xs bg-white px-3 py-2 rounded-xl border border-slate-200">
-                <span class="font-extrabold text-slate-500 w-14">Set 1</span>
-
-                <!-- Custom Weight Input + Separate KG / LBS Toggle Button per Set -->
-                <div class="flex items-center gap-1">
-                  <input type="number" step="0.5" value="15" onchange="updateSetValue(5, 0, 'w', this.value)" class="w-20 px-2 py-1.5 border border-slate-300 rounded-lg text-center font-extrabold text-slate-900 text-sm focus:outline-none focus:border-slate-900">
-                  <button onclick="toggleSetUnit(5, 0)" class="px-2.5 py-1.5 rounded-lg font-extrabold text-xs border transition bg-blue-100 text-blue-900 border-blue-300" title="Tap to toggle kg / lbs for this set">
-                    kg
-                  </button>
-                </div>
-
-                <span class="text-slate-400 font-bold">×</span>
-
-                <!-- Rep Input for Each Set -->
-                <div class="flex items-center gap-1">
-                  <input type="number" value="15" onchange="updateSetValue(5, 0, 'r', this.value)" class="w-16 px-2 py-1.5 border border-slate-300 rounded-lg text-center font-extrabold text-slate-900 text-sm focus:outline-none focus:border-slate-900">
-                  <span class="text-slate-500 font-semibold">reps</span>
-                </div>
-
-                <label class="ml-auto flex items-center gap-2 cursor-pointer select-none px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-bold">
-                  <input type="checkbox" onchange="updateSetValue(5, 0, 'done', this.checked)" class="rounded text-slate-900">
-                  <span>Mark Set</span>
-                </label>
-
-                <button onclick="removeSetFromExercise(5, 0)" class="text-slate-300 hover:text-red-600 font-bold px-1.5" title="Remove Set">✕</button>
-              </div>
-            
-          </div>
-        </div>
-      
-        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-          <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="w-6 h-6 rounded-md bg-slate-900 text-white text-xs font-extrabold flex items-center justify-center">7</span>
-                <h4 class="text-sm font-extrabold text-slate-900">Single-Arm Sideways Cable Tricep Extension</h4>
-                <span class="px-2 py-0.5 text-[10px] font-bold bg-indigo-50 text-indigo-700 rounded border border-indigo-200">Notebook Target: 3×12–15</span>
-              </div>
-              <p class="text-[11px] text-slate-500 mt-0.5 ml-8">10-20 lbs neutral grip; low-friction elbow finish</p>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <button onclick="toggleExerciseAllUnits(6)" class="touch-btn px-2.5 py-1 text-xs font-bold bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-100" title="Toggle all sets of this exercise between kg and lbs">
-                All: LBS ⇄
-              </button>
-              <button onclick="addSetToExercise(6)" class="touch-btn px-3 py-1 text-xs font-extrabold bg-slate-900 text-white rounded-lg hover:bg-slate-800">
-                + Add Set
-              </button>
-            </div>
-          </div>
-
-          <div class="space-y-2">
-            
-              <div class="flex flex-wrap sm:flex-nowrap items-center gap-2 text-xs bg-white px-3 py-2 rounded-xl border border-slate-200">
-                <span class="font-extrabold text-slate-500 w-14">Set 1</span>
-
-                <!-- Custom Weight Input + Separate KG / LBS Toggle Button per Set -->
-                <div class="flex items-center gap-1">
-                  <input type="number" step="0.5" value="15" onchange="updateSetValue(6, 0, 'w', this.value)" class="w-20 px-2 py-1.5 border border-slate-300 rounded-lg text-center font-extrabold text-slate-900 text-sm focus:outline-none focus:border-slate-900">
-                  <button onclick="toggleSetUnit(6, 0)" class="px-2.5 py-1.5 rounded-lg font-extrabold text-xs border transition bg-amber-100 text-amber-900 border-amber-300" title="Tap to toggle kg / lbs for this set">
-                    lbs
-                  </button>
-                </div>
-
-                <span class="text-slate-400 font-bold">×</span>
-
-                <!-- Rep Input for Each Set -->
-                <div class="flex items-center gap-1">
-                  <input type="number" value="15" onchange="updateSetValue(6, 0, 'r', this.value)" class="w-16 px-2 py-1.5 border border-slate-300 rounded-lg text-center font-extrabold text-slate-900 text-sm focus:outline-none focus:border-slate-900">
-                  <span class="text-slate-500 font-semibold">reps</span>
-                </div>
-
-                <label class="ml-auto flex items-center gap-2 cursor-pointer select-none px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-bold">
-                  <input type="checkbox" onchange="updateSetValue(6, 0, 'done', this.checked)" class="rounded text-slate-900">
-                  <span>Mark Set</span>
-                </label>
-
-                <button onclick="removeSetFromExercise(6, 0)" class="text-slate-300 hover:text-red-600 font-bold px-1.5" title="Remove Set">✕</button>
-              </div>
-            
-          </div>
-        </div>
-      
-        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-          <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="w-6 h-6 rounded-md bg-slate-900 text-white text-xs font-extrabold flex items-center justify-center">8</span>
-                <h4 class="text-sm font-extrabold text-slate-900">Tricep Rope Pushdowns</h4>
-                <span class="px-2 py-0.5 text-[10px] font-bold bg-indigo-50 text-indigo-700 rounded border border-indigo-200">Notebook Target: 3×12–15</span>
-              </div>
-              <p class="text-[11px] text-slate-500 mt-0.5 ml-8">50-70 lbs burnout; keep wrists locked neutral</p>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <button onclick="toggleExerciseAllUnits(7)" class="touch-btn px-2.5 py-1 text-xs font-bold bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-100" title="Toggle all sets of this exercise between kg and lbs">
-                All: LBS ⇄
-              </button>
-              <button onclick="addSetToExercise(7)" class="touch-btn px-3 py-1 text-xs font-extrabold bg-slate-900 text-white rounded-lg hover:bg-slate-800">
-                + Add Set
-              </button>
-            </div>
-          </div>
-
-          <div class="space-y-2">
-            
-              <div class="flex flex-wrap sm:flex-nowrap items-center gap-2 text-xs bg-white px-3 py-2 rounded-xl border border-slate-200">
-                <span class="font-extrabold text-slate-500 w-14">Set 1</span>
-
-                <!-- Custom Weight Input + Separate KG / LBS Toggle Button per Set -->
-                <div class="flex items-center gap-1">
-                  <input type="number" step="0.5" value="60" onchange="updateSetValue(7, 0, 'w', this.value)" class="w-20 px-2 py-1.5 border border-slate-300 rounded-lg text-center font-extrabold text-slate-900 text-sm focus:outline-none focus:border-slate-900">
-                  <button onclick="toggleSetUnit(7, 0)" class="px-2.5 py-1.5 rounded-lg font-extrabold text-xs border transition bg-amber-100 text-amber-900 border-amber-300" title="Tap to toggle kg / lbs for this set">
-                    lbs
-                  </button>
-                </div>
-
-                <span class="text-slate-400 font-bold">×</span>
-
-                <!-- Rep Input for Each Set -->
-                <div class="flex items-center gap-1">
-                  <input type="number" value="15" onchange="updateSetValue(7, 0, 'r', this.value)" class="w-16 px-2 py-1.5 border border-slate-300 rounded-lg text-center font-extrabold text-slate-900 text-sm focus:outline-none focus:border-slate-900">
-                  <span class="text-slate-500 font-semibold">reps</span>
-                </div>
-
-                <label class="ml-auto flex items-center gap-2 cursor-pointer select-none px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 font-bold">
-                  <input type="checkbox" onchange="updateSetValue(7, 0, 'done', this.checked)" class="rounded text-slate-900">
-                  <span>Mark Set</span>
-                </label>
-
-                <button onclick="removeSetFromExercise(7, 0)" class="text-slate-300 hover:text-red-600 font-bold px-1.5" title="Remove Set">✕</button>
-              </div>
-            
-          </div>
+        <!-- Big Flick Toggle: Weight Training Page ⇄ Cardio Session Page -->
+        <div class="mt-4 p-1.5 bg-slate-100 rounded-2xl border border-slate-200 grid grid-cols-2 gap-2">
+          <button id="subtab-weights" onclick="switchWorkoutSubpage('weights')" class="touch-btn py-3 px-4 rounded-xl font-extrabold text-sm flex items-center justify-center gap-2 subtab-active">
+            <span>🏋️</span>
+            <span>Weight Training &amp; Core</span>
+          </button>
+          <button id="subtab-cardio" onclick="switchWorkoutSubpage('cardio')" class="touch-btn py-3 px-4 rounded-xl font-extrabold text-sm flex items-center justify-center gap-2 subtab-inactive">
+            <span>🏃</span>
+            <span>Cardio Session Builder</span>
+          </button>
         </div>
       </div>
 
-            <!-- Add Custom Exercise Row -->
-            <div class="mt-5 pt-4 border-t border-slate-200 flex flex-wrap sm:flex-nowrap gap-2">
-              <input type="text" id="customExName" placeholder="Add custom exercise (e.g., Smith Flat Bench, Poliquin Step-Ups)..." class="flex-1 px-3.5 py-2 text-sm border border-slate-300 rounded-xl focus:outline-none focus:border-slate-900">
-              <select id="customExUnit" class="px-3 py-2 text-xs font-bold border border-slate-300 rounded-xl bg-white">
-                <option value="kg">Default: kg</option>
-                <option value="lbs">Default: lbs</option>
-              </select>
-              <button onclick="addCustomExerciseToDay()" class="touch-btn px-4 py-2 text-xs font-extrabold bg-slate-900 text-white rounded-xl hover:bg-slate-800 whitespace-nowrap">
-                + Add Exercise (1 Set)
+      <!-- =================================================================== -->
+      <!-- SUBPAGE 1A: FULL-WIDTH WEIGHT TRAINING & TIMED EXERCISE PAGE        -->
+      <!-- =================================================================== -->
+      <div id="workout-subpage-weights" class="space-y-4">
+        <div class="ipad-card">
+          <div id="workoutExercisesContainer" class="space-y-4">
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200 space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="w-7 h-7 rounded-xl theme-btn text-xs font-extrabold flex items-center justify-center">1</span>
+              <h4 class="text-base font-extrabold text-slate-900">Reverse Neutral-Grip / Wide Lat Pulldowns</h4>
+              <span class="px-2.5 py-0.5 text-xs font-extrabold rounded-lg theme-pill">4 × 8–12</span>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <button onclick="toggleExerciseTimedMode(0)" class="touch-btn px-3 py-1.5 text-xs font-extrabold rounded-xl border bg-white text-slate-700 border-slate-300" title="Switch between Weight × Reps and Timed Hold mode">
+                🔢 Reps Mode
+              </button>
+              <button onclick="toggleExerciseAllUnits(0)" class="touch-btn px-3 py-1.5 text-xs font-extrabold bg-white border border-slate-300 text-slate-800 rounded-xl hover:bg-slate-100">
+                Unit: LBS ⇄
+              </button>
+              <button onclick="addSetToExercise(0)" class="touch-btn px-4 py-1.5 text-xs font-extrabold theme-btn rounded-xl">
+                + Set
               </button>
             </div>
           </div>
+
+          
+
+          <div class="space-y-2.5">
+            
+              <div class="flex flex-wrap items-center justify-between gap-3 bg-white px-4 py-3 rounded-2xl border border-slate-200">
+                <span class="font-extrabold text-slate-700 text-sm w-14">Set 1</span>
+
+                <!-- Weight / Load Stepper + KG/LBS Toggle -->
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[11px] font-bold uppercase text-slate-400 mr-1">Weight</span>
+                  <button onclick="stepSetField(0, 0, 'w', -2.5)" class="stepper-btn">−</button>
+                  <input type="number" step="0.5" value="120" onchange="updateSetValue(0, 0, 'w', this.value)" class="w-20 px-2 py-2 border border-slate-300 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                  <button onclick="stepSetField(0, 0, 'w', 2.5)" class="stepper-btn">+</button>
+                  <button onclick="toggleSetUnit(0, 0)" class="px-3 py-2 rounded-xl font-extrabold text-xs border bg-amber-100 text-amber-900 border-amber-300">
+                    lbs
+                  </button>
+                </div>
+
+                <!-- Reps OR Timed Hold Duration Stepper -->
+                
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-[11px] font-bold uppercase text-slate-400 mr-1">Reps</span>
+                    <button onclick="stepSetField(0, 0, 'r', -1)" class="stepper-btn">−</button>
+                    <input type="number" value="10" onchange="updateSetValue(0, 0, 'r', this.value)" class="w-16 px-2 py-2 border border-slate-300 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                    <button onclick="stepSetField(0, 0, 'r', 1)" class="stepper-btn">+</button>
+                  </div>
+                
+
+                <!-- Oversized Mark Set Toggle + Remove -->
+                <div class="flex items-center gap-2 ml-auto">
+                  <label class="flex items-center gap-2 cursor-pointer select-none px-4 py-2 rounded-xl text-xs font-extrabold transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+                    <input type="checkbox" onchange="updateSetValue(0, 0, 'done', this.checked)" class="rounded text-slate-900">
+                    <span>Log Set</span>
+                  </label>
+                  <button onclick="removeSetFromExercise(0, 0)" class="text-slate-300 hover:text-red-600 font-extrabold px-2 py-1 text-sm" title="Remove Set">✕</button>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200 space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="w-7 h-7 rounded-xl theme-btn text-xs font-extrabold flex items-center justify-center">2</span>
+              <h4 class="text-base font-extrabold text-slate-900">Single-Arm Dumbbell or Cable Rows</h4>
+              <span class="px-2.5 py-0.5 text-xs font-extrabold rounded-lg theme-pill">3 × 10–12</span>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <button onclick="toggleExerciseTimedMode(1)" class="touch-btn px-3 py-1.5 text-xs font-extrabold rounded-xl border bg-white text-slate-700 border-slate-300" title="Switch between Weight × Reps and Timed Hold mode">
+                🔢 Reps Mode
+              </button>
+              <button onclick="toggleExerciseAllUnits(1)" class="touch-btn px-3 py-1.5 text-xs font-extrabold bg-white border border-slate-300 text-slate-800 rounded-xl hover:bg-slate-100">
+                Unit: KG ⇄
+              </button>
+              <button onclick="addSetToExercise(1)" class="touch-btn px-4 py-1.5 text-xs font-extrabold theme-btn rounded-xl">
+                + Set
+              </button>
+            </div>
+          </div>
+
+          
+
+          <div class="space-y-2.5">
+            
+              <div class="flex flex-wrap items-center justify-between gap-3 bg-white px-4 py-3 rounded-2xl border border-slate-200">
+                <span class="font-extrabold text-slate-700 text-sm w-14">Set 1</span>
+
+                <!-- Weight / Load Stepper + KG/LBS Toggle -->
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[11px] font-bold uppercase text-slate-400 mr-1">Weight</span>
+                  <button onclick="stepSetField(1, 0, 'w', -2.5)" class="stepper-btn">−</button>
+                  <input type="number" step="0.5" value="25" onchange="updateSetValue(1, 0, 'w', this.value)" class="w-20 px-2 py-2 border border-slate-300 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                  <button onclick="stepSetField(1, 0, 'w', 2.5)" class="stepper-btn">+</button>
+                  <button onclick="toggleSetUnit(1, 0)" class="px-3 py-2 rounded-xl font-extrabold text-xs border theme-pill">
+                    kg
+                  </button>
+                </div>
+
+                <!-- Reps OR Timed Hold Duration Stepper -->
+                
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-[11px] font-bold uppercase text-slate-400 mr-1">Reps</span>
+                    <button onclick="stepSetField(1, 0, 'r', -1)" class="stepper-btn">−</button>
+                    <input type="number" value="12" onchange="updateSetValue(1, 0, 'r', this.value)" class="w-16 px-2 py-2 border border-slate-300 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                    <button onclick="stepSetField(1, 0, 'r', 1)" class="stepper-btn">+</button>
+                  </div>
+                
+
+                <!-- Oversized Mark Set Toggle + Remove -->
+                <div class="flex items-center gap-2 ml-auto">
+                  <label class="flex items-center gap-2 cursor-pointer select-none px-4 py-2 rounded-xl text-xs font-extrabold transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+                    <input type="checkbox" onchange="updateSetValue(1, 0, 'done', this.checked)" class="rounded text-slate-900">
+                    <span>Log Set</span>
+                  </label>
+                  <button onclick="removeSetFromExercise(1, 0)" class="text-slate-300 hover:text-red-600 font-extrabold px-2 py-1 text-sm" title="Remove Set">✕</button>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200 space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="w-7 h-7 rounded-xl theme-btn text-xs font-extrabold flex items-center justify-center">3</span>
+              <h4 class="text-base font-extrabold text-slate-900">Chest-Supported Machine Row</h4>
+              <span class="px-2.5 py-0.5 text-xs font-extrabold rounded-lg theme-pill">3 × 12–15</span>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <button onclick="toggleExerciseTimedMode(2)" class="touch-btn px-3 py-1.5 text-xs font-extrabold rounded-xl border bg-white text-slate-700 border-slate-300" title="Switch between Weight × Reps and Timed Hold mode">
+                🔢 Reps Mode
+              </button>
+              <button onclick="toggleExerciseAllUnits(2)" class="touch-btn px-3 py-1.5 text-xs font-extrabold bg-white border border-slate-300 text-slate-800 rounded-xl hover:bg-slate-100">
+                Unit: KG ⇄
+              </button>
+              <button onclick="addSetToExercise(2)" class="touch-btn px-4 py-1.5 text-xs font-extrabold theme-btn rounded-xl">
+                + Set
+              </button>
+            </div>
+          </div>
+
+          
+
+          <div class="space-y-2.5">
+            
+              <div class="flex flex-wrap items-center justify-between gap-3 bg-white px-4 py-3 rounded-2xl border border-slate-200">
+                <span class="font-extrabold text-slate-700 text-sm w-14">Set 1</span>
+
+                <!-- Weight / Load Stepper + KG/LBS Toggle -->
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[11px] font-bold uppercase text-slate-400 mr-1">Weight</span>
+                  <button onclick="stepSetField(2, 0, 'w', -2.5)" class="stepper-btn">−</button>
+                  <input type="number" step="0.5" value="45" onchange="updateSetValue(2, 0, 'w', this.value)" class="w-20 px-2 py-2 border border-slate-300 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                  <button onclick="stepSetField(2, 0, 'w', 2.5)" class="stepper-btn">+</button>
+                  <button onclick="toggleSetUnit(2, 0)" class="px-3 py-2 rounded-xl font-extrabold text-xs border theme-pill">
+                    kg
+                  </button>
+                </div>
+
+                <!-- Reps OR Timed Hold Duration Stepper -->
+                
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-[11px] font-bold uppercase text-slate-400 mr-1">Reps</span>
+                    <button onclick="stepSetField(2, 0, 'r', -1)" class="stepper-btn">−</button>
+                    <input type="number" value="12" onchange="updateSetValue(2, 0, 'r', this.value)" class="w-16 px-2 py-2 border border-slate-300 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                    <button onclick="stepSetField(2, 0, 'r', 1)" class="stepper-btn">+</button>
+                  </div>
+                
+
+                <!-- Oversized Mark Set Toggle + Remove -->
+                <div class="flex items-center gap-2 ml-auto">
+                  <label class="flex items-center gap-2 cursor-pointer select-none px-4 py-2 rounded-xl text-xs font-extrabold transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+                    <input type="checkbox" onchange="updateSetValue(2, 0, 'done', this.checked)" class="rounded text-slate-900">
+                    <span>Log Set</span>
+                  </label>
+                  <button onclick="removeSetFromExercise(2, 0)" class="text-slate-300 hover:text-red-600 font-extrabold px-2 py-1 text-sm" title="Remove Set">✕</button>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200 space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="w-7 h-7 rounded-xl theme-btn text-xs font-extrabold flex items-center justify-center">4</span>
+              <h4 class="text-base font-extrabold text-slate-900">Hyperextensions (Roman Chair)</h4>
+              <span class="px-2.5 py-0.5 text-xs font-extrabold rounded-lg theme-pill">3 × 12–15</span>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <button onclick="toggleExerciseTimedMode(3)" class="touch-btn px-3 py-1.5 text-xs font-extrabold rounded-xl border bg-white text-slate-700 border-slate-300" title="Switch between Weight × Reps and Timed Hold mode">
+                🔢 Reps Mode
+              </button>
+              <button onclick="toggleExerciseAllUnits(3)" class="touch-btn px-3 py-1.5 text-xs font-extrabold bg-white border border-slate-300 text-slate-800 rounded-xl hover:bg-slate-100">
+                Unit: KG ⇄
+              </button>
+              <button onclick="addSetToExercise(3)" class="touch-btn px-4 py-1.5 text-xs font-extrabold theme-btn rounded-xl">
+                + Set
+              </button>
+            </div>
+          </div>
+
+          
+
+          <div class="space-y-2.5">
+            
+              <div class="flex flex-wrap items-center justify-between gap-3 bg-white px-4 py-3 rounded-2xl border border-slate-200">
+                <span class="font-extrabold text-slate-700 text-sm w-14">Set 1</span>
+
+                <!-- Weight / Load Stepper + KG/LBS Toggle -->
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[11px] font-bold uppercase text-slate-400 mr-1">Weight</span>
+                  <button onclick="stepSetField(3, 0, 'w', -2.5)" class="stepper-btn">−</button>
+                  <input type="number" step="0.5" value="0" onchange="updateSetValue(3, 0, 'w', this.value)" class="w-20 px-2 py-2 border border-slate-300 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                  <button onclick="stepSetField(3, 0, 'w', 2.5)" class="stepper-btn">+</button>
+                  <button onclick="toggleSetUnit(3, 0)" class="px-3 py-2 rounded-xl font-extrabold text-xs border theme-pill">
+                    kg
+                  </button>
+                </div>
+
+                <!-- Reps OR Timed Hold Duration Stepper -->
+                
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-[11px] font-bold uppercase text-slate-400 mr-1">Reps</span>
+                    <button onclick="stepSetField(3, 0, 'r', -1)" class="stepper-btn">−</button>
+                    <input type="number" value="15" onchange="updateSetValue(3, 0, 'r', this.value)" class="w-16 px-2 py-2 border border-slate-300 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                    <button onclick="stepSetField(3, 0, 'r', 1)" class="stepper-btn">+</button>
+                  </div>
+                
+
+                <!-- Oversized Mark Set Toggle + Remove -->
+                <div class="flex items-center gap-2 ml-auto">
+                  <label class="flex items-center gap-2 cursor-pointer select-none px-4 py-2 rounded-xl text-xs font-extrabold transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+                    <input type="checkbox" onchange="updateSetValue(3, 0, 'done', this.checked)" class="rounded text-slate-900">
+                    <span>Log Set</span>
+                  </label>
+                  <button onclick="removeSetFromExercise(3, 0)" class="text-slate-300 hover:text-red-600 font-extrabold px-2 py-1 text-sm" title="Remove Set">✕</button>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200 space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="w-7 h-7 rounded-xl theme-btn text-xs font-extrabold flex items-center justify-center">5</span>
+              <h4 class="text-base font-extrabold text-slate-900">Incline / Dumbbell Hammer Curls</h4>
+              <span class="px-2.5 py-0.5 text-xs font-extrabold rounded-lg theme-pill">3 × 10–12</span>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <button onclick="toggleExerciseTimedMode(4)" class="touch-btn px-3 py-1.5 text-xs font-extrabold rounded-xl border bg-white text-slate-700 border-slate-300" title="Switch between Weight × Reps and Timed Hold mode">
+                🔢 Reps Mode
+              </button>
+              <button onclick="toggleExerciseAllUnits(4)" class="touch-btn px-3 py-1.5 text-xs font-extrabold bg-white border border-slate-300 text-slate-800 rounded-xl hover:bg-slate-100">
+                Unit: KG ⇄
+              </button>
+              <button onclick="addSetToExercise(4)" class="touch-btn px-4 py-1.5 text-xs font-extrabold theme-btn rounded-xl">
+                + Set
+              </button>
+            </div>
+          </div>
+
+          
+
+          <div class="space-y-2.5">
+            
+              <div class="flex flex-wrap items-center justify-between gap-3 bg-white px-4 py-3 rounded-2xl border border-slate-200">
+                <span class="font-extrabold text-slate-700 text-sm w-14">Set 1</span>
+
+                <!-- Weight / Load Stepper + KG/LBS Toggle -->
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[11px] font-bold uppercase text-slate-400 mr-1">Weight</span>
+                  <button onclick="stepSetField(4, 0, 'w', -2.5)" class="stepper-btn">−</button>
+                  <input type="number" step="0.5" value="12.5" onchange="updateSetValue(4, 0, 'w', this.value)" class="w-20 px-2 py-2 border border-slate-300 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                  <button onclick="stepSetField(4, 0, 'w', 2.5)" class="stepper-btn">+</button>
+                  <button onclick="toggleSetUnit(4, 0)" class="px-3 py-2 rounded-xl font-extrabold text-xs border theme-pill">
+                    kg
+                  </button>
+                </div>
+
+                <!-- Reps OR Timed Hold Duration Stepper -->
+                
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-[11px] font-bold uppercase text-slate-400 mr-1">Reps</span>
+                    <button onclick="stepSetField(4, 0, 'r', -1)" class="stepper-btn">−</button>
+                    <input type="number" value="12" onchange="updateSetValue(4, 0, 'r', this.value)" class="w-16 px-2 py-2 border border-slate-300 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                    <button onclick="stepSetField(4, 0, 'r', 1)" class="stepper-btn">+</button>
+                  </div>
+                
+
+                <!-- Oversized Mark Set Toggle + Remove -->
+                <div class="flex items-center gap-2 ml-auto">
+                  <label class="flex items-center gap-2 cursor-pointer select-none px-4 py-2 rounded-xl text-xs font-extrabold transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+                    <input type="checkbox" onchange="updateSetValue(4, 0, 'done', this.checked)" class="rounded text-slate-900">
+                    <span>Log Set</span>
+                  </label>
+                  <button onclick="removeSetFromExercise(4, 0)" class="text-slate-300 hover:text-red-600 font-extrabold px-2 py-1 text-sm" title="Remove Set">✕</button>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200 space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="w-7 h-7 rounded-xl theme-btn text-xs font-extrabold flex items-center justify-center">6</span>
+              <h4 class="text-base font-extrabold text-slate-900">Preacher Curl Machine</h4>
+              <span class="px-2.5 py-0.5 text-xs font-extrabold rounded-lg theme-pill">3 × 12–15</span>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <button onclick="toggleExerciseTimedMode(5)" class="touch-btn px-3 py-1.5 text-xs font-extrabold rounded-xl border bg-white text-slate-700 border-slate-300" title="Switch between Weight × Reps and Timed Hold mode">
+                🔢 Reps Mode
+              </button>
+              <button onclick="toggleExerciseAllUnits(5)" class="touch-btn px-3 py-1.5 text-xs font-extrabold bg-white border border-slate-300 text-slate-800 rounded-xl hover:bg-slate-100">
+                Unit: KG ⇄
+              </button>
+              <button onclick="addSetToExercise(5)" class="touch-btn px-4 py-1.5 text-xs font-extrabold theme-btn rounded-xl">
+                + Set
+              </button>
+            </div>
+          </div>
+
+          
+
+          <div class="space-y-2.5">
+            
+              <div class="flex flex-wrap items-center justify-between gap-3 bg-white px-4 py-3 rounded-2xl border border-slate-200">
+                <span class="font-extrabold text-slate-700 text-sm w-14">Set 1</span>
+
+                <!-- Weight / Load Stepper + KG/LBS Toggle -->
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[11px] font-bold uppercase text-slate-400 mr-1">Weight</span>
+                  <button onclick="stepSetField(5, 0, 'w', -2.5)" class="stepper-btn">−</button>
+                  <input type="number" step="0.5" value="30" onchange="updateSetValue(5, 0, 'w', this.value)" class="w-20 px-2 py-2 border border-slate-300 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                  <button onclick="stepSetField(5, 0, 'w', 2.5)" class="stepper-btn">+</button>
+                  <button onclick="toggleSetUnit(5, 0)" class="px-3 py-2 rounded-xl font-extrabold text-xs border theme-pill">
+                    kg
+                  </button>
+                </div>
+
+                <!-- Reps OR Timed Hold Duration Stepper -->
+                
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-[11px] font-bold uppercase text-slate-400 mr-1">Reps</span>
+                    <button onclick="stepSetField(5, 0, 'r', -1)" class="stepper-btn">−</button>
+                    <input type="number" value="12" onchange="updateSetValue(5, 0, 'r', this.value)" class="w-16 px-2 py-2 border border-slate-300 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                    <button onclick="stepSetField(5, 0, 'r', 1)" class="stepper-btn">+</button>
+                  </div>
+                
+
+                <!-- Oversized Mark Set Toggle + Remove -->
+                <div class="flex items-center gap-2 ml-auto">
+                  <label class="flex items-center gap-2 cursor-pointer select-none px-4 py-2 rounded-xl text-xs font-extrabold transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+                    <input type="checkbox" onchange="updateSetValue(5, 0, 'done', this.checked)" class="rounded text-slate-900">
+                    <span>Log Set</span>
+                  </label>
+                  <button onclick="removeSetFromExercise(5, 0)" class="text-slate-300 hover:text-red-600 font-extrabold px-2 py-1 text-sm" title="Remove Set">✕</button>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200 space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="w-7 h-7 rounded-xl theme-btn text-xs font-extrabold flex items-center justify-center">7</span>
+              <h4 class="text-base font-extrabold text-slate-900">Farmer's Dumbbell Holds</h4>
+              <span class="px-2.5 py-0.5 text-xs font-extrabold rounded-lg theme-pill">3 × 35–45s</span>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <button onclick="toggleExerciseTimedMode(6)" class="touch-btn px-3 py-1.5 text-xs font-extrabold rounded-xl border bg-amber-100 text-amber-900 border-amber-300" title="Switch between Weight × Reps and Timed Hold mode">
+                ⏱️ Timed Mode
+              </button>
+              <button onclick="toggleExerciseAllUnits(6)" class="touch-btn px-3 py-1.5 text-xs font-extrabold bg-white border border-slate-300 text-slate-800 rounded-xl hover:bg-slate-100">
+                Unit: KG ⇄
+              </button>
+              <button onclick="addSetToExercise(6)" class="touch-btn px-4 py-1.5 text-xs font-extrabold theme-btn rounded-xl">
+                + Set
+              </button>
+            </div>
+          </div>
+
+          
+            <div class="flex flex-wrap items-center gap-1.5 pt-0.5">
+              <span class="text-[11px] font-extrabold uppercase text-amber-800 mr-1">Logging Requirements:</span>
+              <span class="px-2.5 py-0.5 text-[11px] font-bold bg-amber-50 text-amber-900 border border-amber-200 rounded-lg">⚖️ Load per Hand (kg/lbs)</span><span class="px-2.5 py-0.5 text-[11px] font-bold bg-amber-50 text-amber-900 border border-amber-200 rounded-lg">⏱️ Hold Duration (sec)</span><span class="px-2.5 py-0.5 text-[11px] font-bold bg-amber-50 text-amber-900 border border-amber-200 rounded-lg">▶️ Live Hold Timer</span>
+            </div>
+          
+
+          <div class="space-y-2.5">
+            
+              <div class="flex flex-wrap items-center justify-between gap-3 bg-white px-4 py-3 rounded-2xl border border-slate-200">
+                <span class="font-extrabold text-slate-700 text-sm w-14">Set 1</span>
+
+                <!-- Weight / Load Stepper + KG/LBS Toggle -->
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[11px] font-bold uppercase text-slate-400 mr-1">Load</span>
+                  <button onclick="stepSetField(6, 0, 'w', -2.5)" class="stepper-btn">−</button>
+                  <input type="number" step="0.5" value="20" onchange="updateSetValue(6, 0, 'w', this.value)" class="w-20 px-2 py-2 border border-slate-300 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                  <button onclick="stepSetField(6, 0, 'w', 2.5)" class="stepper-btn">+</button>
+                  <button onclick="toggleSetUnit(6, 0)" class="px-3 py-2 rounded-xl font-extrabold text-xs border theme-pill">
+                    kg
+                  </button>
+                </div>
+
+                <!-- Reps OR Timed Hold Duration Stepper -->
+                
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-[11px] font-bold uppercase text-amber-700 mr-1">Hold</span>
+                    <button onclick="stepSetField(6, 0, 'r', -5)" class="stepper-btn">−</button>
+                    <input type="number" value="35" onchange="updateSetValue(6, 0, 'r', this.value)" class="w-16 px-2 py-2 border border-amber-300 bg-amber-50/40 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                    <button onclick="stepSetField(6, 0, 'r', 5)" class="stepper-btn">+</button>
+                    <button onclick="toggleSetTimeUnit(6, 0)" class="px-3 py-2 rounded-xl font-extrabold text-xs bg-amber-100 text-amber-900 border border-amber-300">
+                      sec ⇄
+                    </button>
+                    <button id="timer-btn-6-0" onclick="toggleLiveHoldTimer(6, 0)" class="px-3 py-2 rounded-xl font-extrabold text-xs bg-slate-900 text-white">
+                      ▶️ 35s
+                    </button>
+                  </div>
+                
+
+                <!-- Oversized Mark Set Toggle + Remove -->
+                <div class="flex items-center gap-2 ml-auto">
+                  <label class="flex items-center gap-2 cursor-pointer select-none px-4 py-2 rounded-xl text-xs font-extrabold transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+                    <input type="checkbox" onchange="updateSetValue(6, 0, 'done', this.checked)" class="rounded text-slate-900">
+                    <span>Log Set</span>
+                  </label>
+                  <button onclick="removeSetFromExercise(6, 0)" class="text-slate-300 hover:text-red-600 font-extrabold px-2 py-1 text-sm" title="Remove Set">✕</button>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+        
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200 space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="w-7 h-7 rounded-xl theme-btn text-xs font-extrabold flex items-center justify-center">8</span>
+              <h4 class="text-base font-extrabold text-slate-900">Wrist Curls / Flexion Work</h4>
+              <span class="px-2.5 py-0.5 text-xs font-extrabold rounded-lg theme-pill">3 × 15–20</span>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <button onclick="toggleExerciseTimedMode(7)" class="touch-btn px-3 py-1.5 text-xs font-extrabold rounded-xl border bg-white text-slate-700 border-slate-300" title="Switch between Weight × Reps and Timed Hold mode">
+                🔢 Reps Mode
+              </button>
+              <button onclick="toggleExerciseAllUnits(7)" class="touch-btn px-3 py-1.5 text-xs font-extrabold bg-white border border-slate-300 text-slate-800 rounded-xl hover:bg-slate-100">
+                Unit: KG ⇄
+              </button>
+              <button onclick="addSetToExercise(7)" class="touch-btn px-4 py-1.5 text-xs font-extrabold theme-btn rounded-xl">
+                + Set
+              </button>
+            </div>
+          </div>
+
+          
+
+          <div class="space-y-2.5">
+            
+              <div class="flex flex-wrap items-center justify-between gap-3 bg-white px-4 py-3 rounded-2xl border border-slate-200">
+                <span class="font-extrabold text-slate-700 text-sm w-14">Set 1</span>
+
+                <!-- Weight / Load Stepper + KG/LBS Toggle -->
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[11px] font-bold uppercase text-slate-400 mr-1">Weight</span>
+                  <button onclick="stepSetField(7, 0, 'w', -2.5)" class="stepper-btn">−</button>
+                  <input type="number" step="0.5" value="10" onchange="updateSetValue(7, 0, 'w', this.value)" class="w-20 px-2 py-2 border border-slate-300 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                  <button onclick="stepSetField(7, 0, 'w', 2.5)" class="stepper-btn">+</button>
+                  <button onclick="toggleSetUnit(7, 0)" class="px-3 py-2 rounded-xl font-extrabold text-xs border theme-pill">
+                    kg
+                  </button>
+                </div>
+
+                <!-- Reps OR Timed Hold Duration Stepper -->
+                
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-[11px] font-bold uppercase text-slate-400 mr-1">Reps</span>
+                    <button onclick="stepSetField(7, 0, 'r', -1)" class="stepper-btn">−</button>
+                    <input type="number" value="20" onchange="updateSetValue(7, 0, 'r', this.value)" class="w-16 px-2 py-2 border border-slate-300 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                    <button onclick="stepSetField(7, 0, 'r', 1)" class="stepper-btn">+</button>
+                  </div>
+                
+
+                <!-- Oversized Mark Set Toggle + Remove -->
+                <div class="flex items-center gap-2 ml-auto">
+                  <label class="flex items-center gap-2 cursor-pointer select-none px-4 py-2 rounded-xl text-xs font-extrabold transition bg-slate-100 text-slate-700 hover:bg-slate-200">
+                    <input type="checkbox" onchange="updateSetValue(7, 0, 'done', this.checked)" class="rounded text-slate-900">
+                    <span>Log Set</span>
+                  </label>
+                  <button onclick="removeSetFromExercise(7, 0)" class="text-slate-300 hover:text-red-600 font-extrabold px-2 py-1 text-sm" title="Remove Set">✕</button>
+                </div>
+              </div>
+              
+          </div>
+        </div>
         </div>
 
-        <!-- Right: Cardio Console (Treadmill / Cycle / Elliptical with interactive setup buttons) -->
-        <div class="lg:col-span-5 space-y-6">
-          <div class="ipad-card p-5">
-            <div class="flex items-center justify-between mb-1">
-              <span class="text-xs font-extrabold uppercase tracking-wider text-blue-600">Cardio &amp; Synovial Flush Console</span>
-              <span id="cardioNotebookRecBadge" class="text-[11px] font-bold bg-blue-50 text-blue-800 px-2.5 py-0.5 rounded-full border border-blue-200">Notebook Rx: 20m @ 4.5 km/h, 3.5%</span>
-            </div>
-            <h3 class="text-base font-extrabold text-slate-900 mb-3">Select Modality &amp; Setup Levels</h3>
+          <!-- Add Custom Exercise Bar (Supports Reps or Timed Hold) -->
+          <div class="mt-5 pt-4 border-t border-slate-200 flex flex-wrap sm:flex-nowrap gap-2">
+            <input type="text" id="customExName" placeholder="Add exercise (e.g., Incline DB Press, Plank, Dead Hang)..." class="flex-1 px-3.5 py-2.5 text-sm font-semibold border border-slate-300 rounded-xl focus:outline-none focus:border-slate-900 bg-white">
+            <select id="customExMode" class="px-3 py-2.5 text-xs font-extrabold border border-slate-300 rounded-xl bg-white">
+              <option value="reps">🔢 Weight × Reps</option>
+              <option value="timed">⏱️ Timed Hold (sec/min)</option>
+            </select>
+            <select id="customExUnit" class="px-3 py-2.5 text-xs font-extrabold border border-slate-300 rounded-xl bg-white">
+              <option value="kg">kg</option>
+              <option value="lbs">lbs</option>
+            </select>
+            <button onclick="addCustomExerciseToDay()" class="touch-btn px-5 py-2.5 text-xs font-extrabold theme-btn rounded-xl whitespace-nowrap">
+              + Add Exercise
+            </button>
+          </div>
+        </div>
+      </div>
 
-            <!-- Modality Selector Buttons (Treadmill / Cycle / Elliptical) -->
-            <div class="grid grid-cols-3 gap-2 mb-4">
-              <button id="mod-treadmill" onclick="selectCardioModality('treadmill')" class="touch-btn py-2.5 px-3 rounded-xl font-bold text-xs border flex flex-col items-center gap-1 bg-slate-900 text-white border-slate-900">
-                <span class="text-base">🏃</span>
+      <!-- =================================================================== -->
+      <!-- SUBPAGE 1B: FULL-WIDTH TABLE-BASED CARDIO SESSION PAGE              -->
+      <!-- =================================================================== -->
+      <div id="workout-subpage-cardio" class="space-y-5 hidden">
+        <div class="ipad-card space-y-5">
+
+          <!-- 1. MASTER CONTROL ON TOP: Session Placement (Before Mode Selection) -->
+          <div>
+            <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 block mb-2">1. Session Placement</span>
+            <div class="grid grid-cols-3 gap-2.5 p-1.5 bg-slate-100 rounded-2xl border border-slate-200">
+              <button onclick="setCardioPlacement('Pre-Workout Warmup')" id="place-pre" class="touch-btn py-3 px-3 text-xs sm:text-sm font-extrabold rounded-xl bg-white text-slate-700 border border-slate-200">
+                🌅 Pre-Lift Warmup
+              </button>
+              <button onclick="setCardioPlacement('Post-Workout Flush')" id="place-post" class="touch-btn py-3 px-3 text-xs sm:text-sm font-extrabold rounded-xl theme-btn">
+                ⚡ Post-Lift Flush
+              </button>
+              <button onclick="setCardioPlacement('Standalone Zone 2')" id="place-solo" class="touch-btn py-3 px-3 text-xs sm:text-sm font-extrabold rounded-xl bg-white text-slate-700 border border-slate-200">
+                🔥 Standalone Cardio
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. MODE SELECTION: Treadmill / Cycle / Elliptical (No Elliptical Warning) -->
+          <div>
+            <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 block mb-2">2. Cardio Equipment</span>
+            <div class="grid grid-cols-3 gap-3">
+              <button id="mod-treadmill" onclick="selectCardioModality('treadmill')" class="touch-btn py-3.5 px-4 rounded-2xl font-extrabold text-sm border flex items-center justify-center gap-2 theme-btn">
+                <span class="text-lg">🏃</span>
                 <span>Treadmill</span>
               </button>
-              <button id="mod-cycle" onclick="selectCardioModality('cycle')" class="touch-btn py-2.5 px-3 rounded-xl font-bold text-xs border flex flex-col items-center gap-1 bg-white text-slate-700 border-slate-300">
-                <span class="text-base">🚴</span>
+              <button id="mod-cycle" onclick="selectCardioModality('cycle')" class="touch-btn py-3.5 px-4 rounded-2xl font-extrabold text-sm border flex items-center justify-center gap-2 bg-white text-slate-700 border-slate-300">
+                <span class="text-lg">🚴</span>
                 <span>Cycle</span>
               </button>
-              <button id="mod-elliptical" onclick="selectCardioModality('elliptical')" class="touch-btn py-2.5 px-3 rounded-xl font-bold text-xs border flex flex-col items-center gap-1 bg-white text-slate-700 border-slate-300">
-                <span class="text-base">⚡</span>
+              <button id="mod-elliptical" onclick="selectCardioModality('elliptical')" class="touch-btn py-3.5 px-4 rounded-2xl font-extrabold text-sm border flex items-center justify-center gap-2 bg-white text-slate-700 border-slate-300">
+                <span class="text-lg">⚡</span>
                 <span>Elliptical</span>
               </button>
             </div>
+            <div id="ellipticalWarning" class="hidden"></div>
+            <span id="cardioNotebookRecBadge" class="hidden"></span>
+          </div>
 
-            <!-- Elliptical Patellar Warning (from Gym Buddy W1D1 Audit) -->
-            <div id="ellipticalWarning" class="hidden mb-4 p-3 rounded-xl bg-amber-50 border border-amber-300 text-xs text-amber-900">
-              <strong>⚠️ Notebook Joint Flag (W1D1 Audit):</strong> Fixed-path elliptical footplates triggered left patellar shear on Week 1 Day 1. Keep resistance ≤ Level 4 or switch to flat Treadmill / high-seat Cycle if knee feels spongy.
-            </div>
-
-            <!-- Common Placement & Duration Setup Buttons -->
-            <div class="space-y-4 bg-slate-50 p-4 rounded-xl border border-slate-200">
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1.5">Session Placement</label>
-                <div class="grid grid-cols-3 gap-1.5">
-                  <button onclick="setCardioPlacement('Pre-Workout Warmup')" id="place-pre" class="py-1.5 px-2 text-[11px] font-bold rounded-lg border bg-white text-slate-700 border-slate-300">Pre-Lift Warmup</button>
-                  <button onclick="setCardioPlacement('Post-Workout Flush')" id="place-post" class="py-1.5 px-2 text-[11px] font-bold rounded-lg border bg-slate-900 text-white border-slate-900">Post-Lift Flush</button>
-                  <button onclick="setCardioPlacement('Standalone Zone 2')" id="place-solo" class="py-1.5 px-2 text-[11px] font-bold rounded-lg border bg-white text-slate-700 border-slate-300">Standalone Z2</button>
-                </div>
-              </div>
-
-              <!-- Duration Controls -->
-              <div>
-                <div class="flex justify-between items-center mb-1.5">
-                  <label class="text-xs font-bold text-slate-700">Duration (Minutes)</label>
-                  <div class="flex items-center gap-1.5">
-                    <button onclick="adjustCardioField('duration', -5)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 font-bold text-xs">-5</button>
-                    <input type="number" id="cardioDurationInput" value="15" onchange="setCardioField('duration', this.value)" class="w-16 text-center font-extrabold text-sm bg-white border border-slate-300 rounded-lg py-1">
-                    <button onclick="adjustCardioField('duration', 5)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 font-bold text-xs">+5</button>
-                  </div>
-                </div>
-                <div class="flex flex-wrap gap-1.5">
-                  <button onclick="setCardioField('duration', 5)" class="px-2.5 py-1 text-xs font-bold bg-white border border-slate-300 rounded-lg hover:bg-slate-100">5m Warmup</button>
-                  <button onclick="setCardioField('duration', 15)" class="px-2.5 py-1 text-xs font-bold bg-white border border-slate-300 rounded-lg hover:bg-slate-100">15m Flush</button>
-                  <button onclick="setCardioField('duration', 20)" class="px-2.5 py-1 text-xs font-bold bg-white border border-slate-300 rounded-lg hover:bg-slate-100">20m Zone 2</button>
-                  <button onclick="setCardioField('duration', 35)" class="px-2.5 py-1 text-xs font-bold bg-white border border-slate-300 rounded-lg hover:bg-slate-100">35m Hike</button>
-                  <button onclick="setCardioField('duration', 40)" class="px-2.5 py-1 text-xs font-bold bg-white border border-slate-300 rounded-lg hover:bg-slate-100">40m Recovery</button>
-                </div>
-              </div>
-
-              <!-- TREADMILL SPECIFIC CONTROLS: Speed (km/h) & Incline (%) -->
-              <div id="controls-treadmill" class="space-y-3 pt-2 border-t border-slate-200">
-                <div>
-                  <div class="flex justify-between items-center mb-1.5">
-                    <label class="text-xs font-bold text-slate-700">Speed (km/h)</label>
-                    <div class="flex items-center gap-1.5">
-                      <button onclick="adjustCardioField('speed', -0.5)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 font-bold text-xs">-0.5</button>
-                      <input type="number" step="0.1" id="treadmillSpeedInput" value="5.0" onchange="setCardioField('speed', this.value)" class="w-16 text-center font-extrabold text-sm bg-white border border-slate-300 rounded-lg py-1">
-                      <button onclick="adjustCardioField('speed', 0.5)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 font-bold text-xs">+0.5</button>
-                    </div>
-                  </div>
-                  <div class="flex flex-wrap gap-1.5">
-                    <button onclick="setCardioField('speed', 4.0)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">4.0</button>
-                    <button onclick="setCardioField('speed', 4.2)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">4.2</button>
-                    <button onclick="setCardioField('speed', 4.5)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">4.5</button>
-                    <button onclick="setCardioField('speed', 5.0)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">5.0</button>
-                    <button onclick="setCardioField('speed', 5.5)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">5.5</button>
-                    <button onclick="setCardioField('speed', 6.0)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">6.0 km/h</button>
-                  </div>
-                </div>
-
-                <div>
-                  <div class="flex justify-between items-center mb-1.5">
-                    <label class="text-xs font-bold text-slate-700">Incline Grade (%)</label>
-                    <div class="flex items-center gap-1.5">
-                      <button onclick="adjustCardioField('incline', -0.5)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 font-bold text-xs">-0.5</button>
-                      <input type="number" step="0.5" id="treadmillInclineInput" value="0" onchange="setCardioField('incline', this.value)" class="w-16 text-center font-extrabold text-sm bg-white border border-slate-300 rounded-lg py-1">
-                      <button onclick="adjustCardioField('incline', 0.5)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 font-bold text-xs">+0.5</button>
-                    </div>
-                  </div>
-                  <div class="flex flex-wrap gap-1.5">
-                    <button onclick="setCardioField('incline', 0)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">0% Flat (Knee Safe)</button>
-                    <button onclick="setCardioField('incline', 2.0)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">2.0%</button>
-                    <button onclick="setCardioField('incline', 3.0)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">3.0%</button>
-                    <button onclick="setCardioField('incline', 3.5)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">3.5%</button>
-                    <button onclick="setCardioField('incline', 4.0)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">4.0% Z2</button>
-                    <button onclick="setCardioField('incline', 5.0)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">5.0%</button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- CYCLE SPECIFIC CONTROLS: Resistance Level, RPM, Seat Setup -->
-              <div id="controls-cycle" class="hidden space-y-3 pt-2 border-t border-slate-200">
-                <div>
-                  <div class="flex justify-between items-center mb-1.5">
-                    <label class="text-xs font-bold text-slate-700">Resistance Level (1–20)</label>
-                    <div class="flex items-center gap-1.5">
-                      <button onclick="adjustCardioField('level', -1)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 font-bold text-xs">-1</button>
-                      <input type="number" id="cycleLevelInput" value="5" onchange="setCardioField('level', this.value)" class="w-16 text-center font-extrabold text-sm bg-white border border-slate-300 rounded-lg py-1">
-                      <button onclick="adjustCardioField('level', 1)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 font-bold text-xs">+1</button>
-                    </div>
-                  </div>
-                  <div class="flex flex-wrap gap-1.5">
-                    <button onclick="setCardioField('level', 3)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">Lvl 3 Flush</button>
-                    <button onclick="setCardioField('level', 5)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">Lvl 5 Z2</button>
-                    <button onclick="setCardioField('level', 8)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">Lvl 8 Climb</button>
-                    <button onclick="setCardioField('level', 12)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">Lvl 12 Heavy</button>
-                  </div>
-                </div>
-
-                <div>
-                  <div class="flex justify-between items-center mb-1.5">
-                    <label class="text-xs font-bold text-slate-700">Target Cadence (RPM) &amp; Seat Height</label>
-                    <input type="number" id="cycleRpmInput" value="80" onchange="setCardioField('rpm', this.value)" class="w-16 text-center font-extrabold text-sm bg-white border border-slate-300 rounded-lg py-1">
-                  </div>
-                  <div class="flex flex-wrap gap-1.5">
-                    <button onclick="setCardioField('rpm', 75)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">75 RPM (High Seat 25°)</button>
-                    <button onclick="setCardioField('rpm', 85)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">85 RPM Spin</button>
-                    <button onclick="setCardioField('rpm', 95)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">95 RPM Tempo</button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- ELLIPTICAL SPECIFIC CONTROLS: Resistance Level, Cross-Ramp Incline, SPM -->
-              <div id="controls-elliptical" class="hidden space-y-3 pt-2 border-t border-slate-200">
-                <div>
-                  <div class="flex justify-between items-center mb-1.5">
-                    <label class="text-xs font-bold text-slate-700">Resistance Level (1–20)</label>
-                    <div class="flex items-center gap-1.5">
-                      <button onclick="adjustCardioField('level', -1)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 font-bold text-xs">-1</button>
-                      <input type="number" id="ellipticalLevelInput" value="4" onchange="setCardioField('level', this.value)" class="w-16 text-center font-extrabold text-sm bg-white border border-slate-300 rounded-lg py-1">
-                      <button onclick="adjustCardioField('level', 1)" class="w-7 h-7 rounded-lg bg-white border border-slate-300 font-bold text-xs">+1</button>
-                    </div>
-                  </div>
-                  <div class="flex flex-wrap gap-1.5">
-                    <button onclick="setCardioField('level', 2)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">Lvl 2 Low-Shear</button>
-                    <button onclick="setCardioField('level', 4)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">Lvl 4 Smooth</button>
-                    <button onclick="setCardioField('level', 6)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">Lvl 6 Moderate</button>
-                    <button onclick="setCardioField('level', 8)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">Lvl 8 Effort</button>
-                  </div>
-                </div>
-
-                <div>
-                  <div class="flex justify-between items-center mb-1.5">
-                    <label class="text-xs font-bold text-slate-700">Cross-Ramp Level &amp; Stride SPM</label>
-                    <input type="number" id="ellipticalRampInput" value="3" onchange="setCardioField('ramp', this.value)" class="w-16 text-center font-extrabold text-sm bg-white border border-slate-300 rounded-lg py-1">
-                  </div>
-                  <div class="flex flex-wrap gap-1.5">
-                    <button onclick="setCardioField('ramp', 1)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">Ramp 1 (Flat)</button>
-                    <button onclick="setCardioField('ramp', 3)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">Ramp 3</button>
-                    <button onclick="setCardioField('ramp', 6)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">Ramp 6</button>
-                    <button onclick="setCardioField('spm', 120)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">120 SPM</button>
-                    <button onclick="setCardioField('spm', 135)" class="px-2.5 py-1 text-xs font-semibold bg-white border border-slate-300 rounded-lg">135 SPM</button>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Optional Taper / Interval Notes (like 0-2m 6km/h, 2-5m 5.5km/h, 5-15m 5km/h) -->
-              <div>
-                <label class="block text-xs font-bold text-slate-600 mb-1">Interval / Taper Splits (Optional)</label>
-                <input type="text" id="cardioNotesInput" placeholder="e.g., 0-2m 6.0 km/h, 2-5m 5.5 km/h, 5-15m 5.0 km/h" class="w-full px-3 py-1.5 text-xs bg-white border border-slate-300 rounded-lg focus:outline-none">
-              </div>
-
-              <div class="flex gap-2">
-                <button onclick="logCardioSession()" class="touch-btn flex-1 py-2.5 text-xs font-extrabold uppercase tracking-wider bg-blue-600 text-white rounded-xl hover:bg-blue-700 shadow-sm">
-                  + Log Cardio Session
-                </button>
-                <button onclick="applyNotebookCardioRx()" class="touch-btn px-3 py-2.5 text-xs font-bold bg-white text-blue-700 border border-blue-300 rounded-xl hover:bg-blue-50" title="Auto-fill today's prescribed NotebookLM cardio">
-                  Use Rx
-                </button>
+          <!-- 3. TOTAL TIME BAR ON TOP (Number Input with - / + Keys on Either Side, No Presets) -->
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <span class="text-sm font-extrabold text-slate-900">Total Session Time (mins)</span>
+              <div class="flex items-center gap-2">
+                <button onclick="adjustCardioField('duration', -1)" class="stepper-btn">−</button>
+                <input type="number" id="cardioDurationInput" value="15" onchange="setCardioField('duration', this.value)" class="w-20 text-center font-extrabold text-base bg-white border border-slate-300 rounded-xl py-2 focus:outline-none">
+                <button onclick="adjustCardioField('duration', 1)" class="stepper-btn">+</button>
               </div>
             </div>
 
-            <!-- Logged Cardio Sessions List for Today -->
-            <div class="mt-5 pt-4 border-t border-slate-200">
-              <div class="flex flex-wrap justify-between items-center gap-2 mb-3">
-                <div>
-                  <span class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Logged Cardio Segments Today</span>
-                  <span id="cardioCountLabel" class="ml-2 px-2 py-0.5 text-xs font-bold bg-slate-100 text-slate-700 rounded-md">0 logged</span>
-                </div>
-                <button onclick="clearAllCardioToday()" class="px-2.5 py-1 text-xs font-bold bg-red-50 text-red-700 border border-red-200 rounded-lg hover:bg-red-100" title="Remove all cardio logs for this date">
-                  🗑️ Clear All Cardio Today
-                </button>
-              </div>
-              <div id="cardioLogList" class="space-y-3"><div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-400 text-center">No cardio logged for 2026-10-15 yet. Select Treadmill, Cycle, or Elliptical above and tap "+ Log Cardio Session".</div></div>
+            <div class="flex items-center gap-3 text-xs font-extrabold">
+              <span id="cardioSplitTimeTally" class="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-700">Splits: 20 / 20 mins</span>
+              <span id="cardioDraftBurnPreview" class="px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800">~220 kcal</span>
             </div>
           </div>
-        </div>
 
+          <!-- Hidden legacy inputs kept for compatibility -->
+          <div class="hidden">
+            <input type="number" id="treadmillSpeedInput" value="5.0">
+            <input type="number" id="treadmillInclineInput" value="0">
+            <input type="number" id="cycleLevelInput" value="5">
+            <input type="number" id="cycleRpmInput" value="80">
+            <input type="number" id="ellipticalLevelInput" value="4">
+            <input type="number" id="ellipticalRampInput" value="3">
+            <input type="text" id="cardioNotesInput" value="">
+            <div id="controls-treadmill"></div>
+            <div id="controls-cycle"></div>
+            <div id="controls-elliptical"></div>
+          </div>
+
+          <!-- 4. UNIFIED INTERVAL / SPLIT TABLE (Treadmill / Cycle / Elliptical) -->
+          <div class="overflow-x-auto border border-slate-200 rounded-2xl bg-white">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="bg-slate-900 text-white text-[11px] uppercase tracking-wider">
+                <tr>
+                  <th class="py-3 px-3">Segment</th>
+                  <th class="py-3 px-3">Time (mins)</th>
+                  <th class="py-3 px-3" id="cardioColHeaderA">Speed (km/h)</th>
+                  <th class="py-3 px-3" id="cardioColHeaderB">Incline (%)</th>
+                  <th class="py-3 px-3">Est. Burn</th>
+                  <th class="py-3 px-3 text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody id="cardioSplitTableBody" class="divide-y divide-slate-200">
+          <tr class="bg-white">
+            <td class="py-3 px-3 font-extrabold text-slate-900 whitespace-nowrap">
+              <span class="px-2.5 py-1 rounded-lg theme-pill text-xs">Split 1</span>
+            </td>
+            <td class="py-3 px-3">
+              <div class="flex items-center gap-1.5">
+                <button onclick="stepCardioSplitRow(0, 'mins', -1)" class="stepper-btn">−</button>
+                <input type="number" step="0.5" value="20" onchange="updateCardioSplitRow(0, 'mins', this.value)" class="w-16 text-center font-extrabold text-sm bg-white border border-slate-300 rounded-xl py-2">
+                <button onclick="stepCardioSplitRow(0, 'mins', 1)" class="stepper-btn">+</button>
+                <span class="text-xs font-bold text-slate-400">min</span>
+              </div>
+            </td>
+            <td class="py-3 px-3">
+              <div class="flex items-center gap-1.5">
+                <button onclick="stepCardioSplitRow(0, 'paramA', -0.5)" class="stepper-btn">−</button>
+                <input type="number" step="0.5" value="4.5" onchange="updateCardioSplitRow(0, 'paramA', this.value)" class="w-16 text-center font-extrabold text-sm bg-white border border-slate-300 rounded-xl py-2">
+                <button onclick="stepCardioSplitRow(0, 'paramA', 0.5)" class="stepper-btn">+</button>
+                <span class="text-xs font-bold text-slate-400">km/h</span>
+              </div>
+            </td>
+            <td class="py-3 px-3">
+              <div class="flex items-center gap-1.5">
+                <button onclick="stepCardioSplitRow(0, 'paramB', -0.5)" class="stepper-btn">−</button>
+                <input type="number" step="0.5" value="4" onchange="updateCardioSplitRow(0, 'paramB', this.value)" class="w-16 text-center font-extrabold text-sm bg-white border border-slate-300 rounded-xl py-2">
+                <button onclick="stepCardioSplitRow(0, 'paramB', 0.5)" class="stepper-btn">+</button>
+                <span class="text-xs font-bold text-slate-400">%</span>
+              </div>
+            </td>
+            <td class="py-3 px-3 font-extrabold text-emerald-700 whitespace-nowrap">
+              ~220 kcal<span class="text-xs font-semibold text-slate-400"> • 1.50 km</span>
+            </td>
+            <td class="py-3 px-3 text-center">
+              <button onclick="removeCardioSplitRow(0)" class="px-2.5 py-1.5 text-xs font-extrabold bg-red-50 text-red-700 border border-red-200 rounded-lg hover:bg-red-100">✕</button>
+            </td>
+          </tr>
+        </tbody>
+            </table>
+          </div>
+
+          <!-- Add Split Row + Log Cardio Session Buttons -->
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2">
+              <button onclick="addCardioSplitRow()" class="touch-btn px-4 py-2.5 text-xs font-extrabold bg-slate-100 text-slate-900 border border-slate-300 rounded-xl hover:bg-slate-200">
+                + Add Split Row
+              </button>
+              <button onclick="applyNotebookCardioRx()" class="touch-btn px-3.5 py-2.5 text-xs font-bold bg-white text-slate-600 border border-slate-200 rounded-xl hover:bg-slate-50">
+                Reset Splits
+              </button>
+            </div>
+            <button onclick="logCardioSession()" class="touch-btn px-6 py-3 text-xs sm:text-sm font-extrabold uppercase tracking-wider theme-btn rounded-xl">
+              ✓ Log Cardio Session
+            </button>
+          </div>
+
+          <!-- Logged Cardio Sessions Today -->
+          <div class="pt-4 border-t border-slate-200">
+            <div class="flex flex-wrap justify-between items-center gap-2 mb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Logged Cardio Sessions</span>
+                <span id="cardioCountLabel" class="px-2.5 py-0.5 text-xs font-extrabold rounded-lg theme-pill">0 logged</span>
+              </div>
+              <button onclick="clearAllCardioToday()" class="px-3 py-1.5 text-xs font-bold bg-red-50 text-red-700 border border-red-200 rounded-xl hover:bg-red-100">
+                🗑️ Clear All
+              </button>
+            </div>
+            <div id="cardioLogList" class="space-y-3"><div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-400 text-center">No cardio sessions logged for 2026-10-15.</div></div>
+          </div>
+
+        </div>
       </div>
+
     </section>
 
     <!-- ========================================================================= -->
     <!-- SECTION 2: CALORIE & LIQUID TRACKER (5% DEFICIT + SMART MACRO/MICRO AI)   -->
     <!-- ========================================================================= -->
-    <section id="section-calories" class="hidden space-y-6">
+    <section id="section-calories" class="space-y-6 hidden">
 
       <!-- Top Row: 5% Overboard Deficit Plan Card + Multi-Segment Liquid Intake Bar Card -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -1197,7 +1324,7 @@
         <div class="ipad-card p-5">
           <div class="flex justify-between items-start gap-2">
             <div>
-              <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Notebook Deficit Baseline (+5% Buffer)</span>
+              <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Daily Calorie Target (+5% Buffer)</span>
               <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-0.5">
                 <span id="calConsumed">0</span>
                 <span class="text-base font-medium text-slate-500">/ <span id="calTargetDisplay">2200</span> kcal</span>
@@ -1267,7 +1394,7 @@
         <div class="ipad-card p-5">
           <div class="flex flex-wrap justify-between items-start gap-2">
             <div>
-              <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Liquid Intake Bar (Notebook Target: <span id="liqTargetLabel">3150</span> ml)</span>
+              <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Daily Hydration (Target: <span id="liqTargetLabel">3150</span> ml)</span>
               <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-0.5">
                 <span id="liqTotal">0</span>
                 <span class="text-base font-medium text-slate-500">/ <span id="liqTargetDisplay">3150</span> ml</span>
@@ -1290,7 +1417,7 @@
           <!-- Notebook Water Tracker Presets + Custom ml Button -->
           <div class="space-y-2.5 pt-1">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-slate-600">Notebook Water Presets (Blue Bar):</span>
+              <span class="text-xs font-bold text-slate-600">Quick Water Add:</span>
               <button onclick="resetWater()" class="text-xs font-bold text-slate-400 hover:text-red-600">↺ Reset Water</button>
             </div>
             <div class="grid grid-cols-3 sm:grid-cols-6 gap-1.5">
@@ -1345,7 +1472,7 @@
 
             <!-- Quick One-Tap Notebook Staples (from What I Ate Today? Notebook) -->
             <div class="mb-3">
-              <span class="text-[11px] font-bold text-slate-500 block mb-1.5">One-Tap Notebook Presets (Auto-fills Description &amp; Macros):</span>
+              <span class="text-[11px] font-bold text-slate-500 block mb-1.5">Quick Staples:</span>
               <div class="flex flex-wrap gap-1.5">
                 <button onclick="quickFillPreset('hydration_juice')" class="px-2.5 py-1 text-[11px] font-bold bg-amber-50 text-amber-900 border border-amber-300 rounded-lg hover:bg-amber-100">⚡ Hydration Juice (600ml + 5g Creatine + Jalani)</button>
                 <button onclick="quickFillPreset('whey_shake')" class="px-2.5 py-1 text-[11px] font-bold bg-amber-50 text-amber-900 border border-amber-300 rounded-lg hover:bg-amber-100">🥤 1.5 Scoop Whey Isolate (40.5g P)</button>
@@ -1482,7 +1609,7 @@
     <!-- ========================================================================= -->
     <!-- SECTION 3: REPORT (DAILY, SUNDAY WEEKLY, MONTHLY AUDIT, RETRO & PUNISH)   -->
     <!-- ========================================================================= -->
-    <section id="section-report" class="hidden space-y-6">
+    <section id="section-report" class="space-y-6 hidden">
 
       <!-- Top Accountability Row: Retrospective 7-Day Ledger + Mandatory Punishment Queue -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -1863,7 +1990,7 @@
   <!-- ========================================================================= -->
   <!-- MODAL 2: NOTEBOOK BASELINE CONFIGURATION                                  -->
   <!-- ========================================================================= -->
-  <div id="baselineModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs hidden items-center justify-center z-50 p-4">
+  <div id="baselineModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-xs items-center justify-center z-50 p-4 hidden">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 border border-slate-200 shadow-2xl">
       <div class="flex justify-between items-start pb-3 border-b border-slate-200">
         <div>
@@ -2400,46 +2527,244 @@
       renderAll();
     }
 
-    function addCustomExerciseToDay() {
-      const nameInput = document.getElementById("customExName");
-      const unitSelect = document.getElementById("customExUnit");
-      const name = nameInput.value.trim();
-      if (!name) {
-        showToast("Enter an exercise name first", "⚠️");
-        return;
+
+
+    // =========================================================================
+    // DAY COLOR TINT PALETTES (Each Day / Split Gets Its Own Modern Color Tint)
+    // =========================================================================
+    const DAY_COLOR_THEMES = {
+      "Push A": {
+        name: "Mon • Push A",
+        bg: "#eef2ff", bg2: "#e0e7ff", accent: "#4f46e5", hover: "#4338ca",
+        soft: "#e0e7ff", border: "#c7d2fe", text: "#1e1b4b", glow: "rgba(79, 70, 229, 0.16)"
+      },
+      "Pull A": {
+        name: "Tue • Pull A",
+        bg: "#ecfeff", bg2: "#cffafe", accent: "#0891b2", hover: "#0e7490",
+        soft: "#cffafe", border: "#a5f3fc", text: "#164e63", glow: "rgba(8, 145, 178, 0.16)"
+      },
+      "Legs A": {
+        name: "Wed • Legs A",
+        bg: "#ecfdf5", bg2: "#d1fae5", accent: "#059669", hover: "#047857",
+        soft: "#d1fae5", border: "#a7f3d0", text: "#064e3b", glow: "rgba(5, 150, 105, 0.16)"
+      },
+      "Push B": {
+        name: "Thu • Push B",
+        bg: "#f5f3ff", bg2: "#ede9fe", accent: "#7c3aed", hover: "#6d28d9",
+        soft: "#ede9fe", border: "#ddd6fe", text: "#2e1065", glow: "rgba(124, 58, 237, 0.16)"
+      },
+      "Pull B": {
+        name: "Fri • Pull B",
+        bg: "#f0f9ff", bg2: "#e0f2fe", accent: "#0284c7", hover: "#0369a1",
+        soft: "#e0f2fe", border: "#bae6fd", text: "#0c4a6e", glow: "rgba(2, 132, 199, 0.16)"
+      },
+      "Legs B": {
+        name: "Sat • Legs B",
+        bg: "#fff1f2", bg2: "#ffe4e6", accent: "#e11d48", hover: "#be123c",
+        soft: "#ffe4e6", border: "#fecdd3", text: "#881337", glow: "rgba(225, 29, 72, 0.16)"
+      },
+      "Rest": {
+        name: "Sun • Recovery",
+        bg: "#fffbeb", bg2: "#fef3c7", accent: "#d97706", hover: "#b45309",
+        soft: "#fef3c7", border: "#fde68a", text: "#78350f", glow: "rgba(217, 119, 6, 0.16)"
       }
-      const unit = unitSelect.value || "kg";
+    };
+
+    let activeWorkoutSubpage = "weights"; // "weights" | "cardio"
+    let cardioDraftTotalMins = 15;
+    let cardioDraftSplits = [
+      { id: 1, mins: 3, paramA: 6.0, paramB: 0 },
+      { id: 2, mins: 5, paramA: 5.5, paramB: 2.0 },
+      { id: 3, mins: 7, paramA: 5.0, paramB: 3.0 }
+    ];
+    let activeHoldTimers = {};
+
+    function applyDayColorTheme(splitName) {
+      const t = DAY_COLOR_THEMES[splitName] || DAY_COLOR_THEMES["Push A"];
+      const root = document.documentElement;
+      root.style.setProperty("--day-bg", t.bg);
+      root.style.setProperty("--day-bg-2", t.bg2);
+      root.style.setProperty("--day-accent", t.accent);
+      root.style.setProperty("--day-accent-hover", t.hover);
+      root.style.setProperty("--day-accent-soft", t.soft);
+      root.style.setProperty("--day-border", t.border);
+      root.style.setProperty("--day-text", t.text);
+      root.style.setProperty("--day-glow", t.glow);
+      const badge = document.getElementById("dayTintBadge");
+      if (badge) badge.textContent = t.name;
+    }
+
+    function switchWorkoutSubpage(sub) {
+      activeWorkoutSubpage = sub;
+      const wPage = document.getElementById("workout-subpage-weights");
+      const cPage = document.getElementById("workout-subpage-cardio");
+      const wBtn = document.getElementById("subtab-weights");
+      const cBtn = document.getElementById("subtab-cardio");
+      if (wPage) wPage.classList.toggle("hidden", sub !== "weights");
+      if (cPage) cPage.classList.toggle("hidden", sub !== "cardio");
+      if (wBtn) {
+        wBtn.className = sub === "weights"
+          ? "touch-btn py-3 px-4 rounded-xl font-extrabold text-sm flex items-center justify-center gap-2 subtab-active"
+          : "touch-btn py-3 px-4 rounded-xl font-extrabold text-sm flex items-center justify-center gap-2 subtab-inactive";
+      }
+      if (cBtn) {
+        cBtn.className = sub === "cardio"
+          ? "touch-btn py-3 px-4 rounded-xl font-extrabold text-sm flex items-center justify-center gap-2 subtab-active"
+          : "touch-btn py-3 px-4 rounded-xl font-extrabold text-sm flex items-center justify-center gap-2 subtab-inactive";
+      }
+    }
+
+    // Detect if an exercise is time-based (Plank, Farmer's Hold, Stretch, Mobility, Dead Hang, Wall Sit, L-Sit)
+    function isExerciseTimed(ex) {
+      if (ex.isTimed !== undefined) return ex.isTimed;
+      const n = (ex.name || "").toLowerCase();
+      const tr = String(ex.targetReps || "").toLowerCase();
+      return (
+        n.includes("plank") ||
+        n.includes("hold") ||
+        n.includes("stretch") ||
+        n.includes("mobility") ||
+        n.includes("dead hang") ||
+        n.includes("wall sit") ||
+        tr.includes("sec") ||
+        tr.includes("min") ||
+        /\d+s/.test(tr)
+      );
+    }
+
+    // Return logical logging requirements for time-based exercises
+    function getTimedExerciseRequirements(ex) {
+      const n = (ex.name || "").toLowerCase();
+      if (n.includes("farmer") || n.includes("carry")) {
+        return [
+          "⚖️ Load per Hand (kg/lbs)",
+          "⏱️ Hold Duration (sec)",
+          "▶️ Live Hold Timer"
+        ];
+      }
+      if (n.includes("stretch") || n.includes("mobility")) {
+        return [
+          "⏱️ Hold Time (min / sec)",
+          "🔄 Both Sides (Left + Right)",
+          "▶️ Live Timer"
+        ];
+      }
+      return [
+        "⏱️ Hold Duration (sec / min)",
+        "⚖️ Added Load (0 = Bodyweight)",
+        "▶️ Live Plank Timer"
+      ];
+    }
+
+    function toggleExerciseTimedMode(exIdx) {
       const day = ensureDayExists(activeDate);
-      day.exercises.push({
-        name,
-        note: "Custom added exercise • 1 set default",
-        targetSets: 3,
-        targetReps: "10–12",
-        unit,
-        sets: [{ w: unit === "lbs" ? 50 : 20, unit, r: 12, done: false }]
+      const ex = day.exercises[exIdx];
+      if (!ex) return;
+      const currentlyTimed = isExerciseTimed(ex);
+      ex.isTimed = !currentlyTimed;
+      ex.sets.forEach(st => {
+        if (ex.isTimed) {
+          st.timeUnit = st.timeUnit || "sec";
+          if (!st.r || st.r < 15) st.r = 45;
+        } else {
+          if (st.r > 25) st.r = 12;
+        }
       });
-      nameInput.value = "";
+      saveState();
+      renderAll();
+      showToast(`${ex.name}: Switched to ${ex.isTimed ? "⏱️ Timed Hold Mode" : "🔢 Weight × Reps Mode"}`);
+    }
+
+    function toggleSetTimeUnit(exIdx, setIdx) {
+      const day = ensureDayExists(activeDate);
+      const st = day.exercises[exIdx] && day.exercises[exIdx].sets[setIdx];
+      if (!st) return;
+      st.timeUnit = (st.timeUnit === "min") ? "sec" : "min";
+      if (st.timeUnit === "min" && st.r >= 30) {
+        st.r = Math.max(1, Math.round(st.r / 60));
+      } else if (st.timeUnit === "sec" && st.r <= 10) {
+        st.r = st.r * 60;
+      }
+      saveState();
+      renderAll();
+    }
+
+    function stepSetField(exIdx, setIdx, field, delta) {
+      const day = ensureDayExists(activeDate);
+      const st = day.exercises[exIdx] && day.exercises[exIdx].sets[setIdx];
+      if (!st) return;
+      if (field === "w") {
+        st.w = Math.max(0, Math.round(((parseFloat(st.w) || 0) + delta) * 10) / 10);
+      } else if (field === "r") {
+        st.r = Math.max(1, (parseInt(st.r, 10) || 0) + delta);
+      }
       markRetroIfPast(day);
       saveState();
       renderAll();
-      showToast(`Added "${name}" (1 set in ${unit})`);
     }
 
-    // Cardio Modality & Setup Controls
+    function toggleLiveHoldTimer(exIdx, setIdx) {
+      const key = `${activeDate}_${exIdx}_${setIdx}`;
+      if (activeHoldTimers[key]) {
+        clearInterval(activeHoldTimers[key].interval);
+        delete activeHoldTimers[key];
+        renderWorkoutSection();
+        return;
+      }
+      const day = ensureDayExists(activeDate);
+      const ex = day.exercises[exIdx];
+      const st = ex && ex.sets[setIdx];
+      if (!st) return;
+      const totalSec = (st.timeUnit === "min") ? Math.round((st.r || 1) * 60) : Math.round(st.r || 45);
+      activeHoldTimers[key] = {
+        remaining: totalSec,
+        interval: setInterval(() => {
+          if (!activeHoldTimers[key]) return;
+          activeHoldTimers[key].remaining--;
+          const btnEl = document.getElementById(`timer-btn-${exIdx}-${setIdx}`);
+          if (btnEl) {
+            btnEl.textContent = `⏸️ ${activeHoldTimers[key].remaining}s`;
+          }
+          if (activeHoldTimers[key].remaining <= 0) {
+            clearInterval(activeHoldTimers[key].interval);
+            delete activeHoldTimers[key];
+            st.done = true;
+            saveState();
+            renderAll();
+            showToast(`Completed ${ex.name} Set ${setIdx + 1} hold!`, "🔥");
+          }
+        }, 1000)
+      };
+      renderWorkoutSection();
+    }
+
+    // =========================================================================
+    // CARDIO TABLE-BASED SESSION BUILDER (Treadmill / Cycle / Elliptical)
+    // =========================================================================
     function selectCardioModality(mod) {
       activeCardioModality = mod;
       ["treadmill", "cycle", "elliptical"].forEach(m => {
         const btn = document.getElementById(`mod-${m}`);
-        const panel = document.getElementById(`controls-${m}`);
         if (btn) {
           btn.className = m === mod
-            ? "touch-btn py-2.5 px-3 rounded-xl font-bold text-xs border flex flex-col items-center gap-1 bg-slate-900 text-white border-slate-900"
-            : "touch-btn py-2.5 px-3 rounded-xl font-bold text-xs border flex flex-col items-center gap-1 bg-white text-slate-700 border-slate-300";
+            ? "touch-btn py-3.5 px-4 rounded-2xl font-extrabold text-sm border flex items-center justify-center gap-2 theme-btn"
+            : "touch-btn py-3.5 px-4 rounded-2xl font-extrabold text-sm border flex items-center justify-center gap-2 bg-white text-slate-700 border-slate-300";
         }
-        if (panel) panel.classList.toggle("hidden", m !== mod);
       });
-      const warn = document.getElementById("ellipticalWarning");
-      if (warn) warn.classList.toggle("hidden", mod !== "elliptical");
+      // Reset default split parameters if switching equipment
+      cardioDraftSplits.forEach(sp => {
+        if (mod === "treadmill") {
+          sp.paramA = 5.0;
+          sp.paramB = 2.0;
+        } else if (mod === "cycle") {
+          sp.paramA = 6;
+          sp.paramB = 80;
+        } else {
+          sp.paramA = 4;
+          sp.paramB = 3;
+        }
+      });
+      renderCardioSplitTable();
     }
 
     function setCardioPlacement(place) {
@@ -2453,8 +2778,8 @@
         const el = document.getElementById(id);
         if (el) {
           el.className = label === place
-            ? "py-1.5 px-2 text-[11px] font-bold rounded-lg border bg-slate-900 text-white border-slate-900"
-            : "py-1.5 px-2 text-[11px] font-bold rounded-lg border bg-white text-slate-700 border-slate-300";
+            ? "touch-btn py-3 px-3 text-xs sm:text-sm font-extrabold rounded-xl theme-btn"
+            : "touch-btn py-3 px-3 text-xs sm:text-sm font-extrabold rounded-xl bg-white text-slate-700 border border-slate-200";
         }
       });
     }
@@ -2462,117 +2787,264 @@
     function setCardioField(field, val) {
       const num = parseFloat(val);
       if (isNaN(num)) return;
-      if (field === "duration") document.getElementById("cardioDurationInput").value = Math.max(1, num);
-      if (field === "speed") document.getElementById("treadmillSpeedInput").value = Math.max(1, num.toFixed(1));
-      if (field === "incline") document.getElementById("treadmillInclineInput").value = Math.max(0, num.toFixed(1));
-      if (field === "level") {
-        document.getElementById("cycleLevelInput").value = Math.max(1, Math.min(20, Math.round(num)));
-        document.getElementById("ellipticalLevelInput").value = Math.max(1, Math.min(20, Math.round(num)));
-      }
-      if (field === "rpm") document.getElementById("cycleRpmInput").value = Math.max(30, Math.round(num));
-      if (field === "ramp") document.getElementById("ellipticalRampInput").value = Math.max(1, Math.min(15, Math.round(num)));
-      if (field === "spm") {
-        const notes = document.getElementById("cardioNotesInput");
-        notes.value = `Target cadence: ${Math.round(num)} SPM`;
+      if (field === "duration") {
+        cardioDraftTotalMins = Math.max(1, Math.round(num));
+        const inp = document.getElementById("cardioDurationInput");
+        if (inp) inp.value = cardioDraftTotalMins;
+        if (cardioDraftSplits.length === 1) {
+          cardioDraftSplits[0].mins = cardioDraftTotalMins;
+        }
+        renderCardioSplitTable();
       }
     }
 
     function adjustCardioField(field, delta) {
       if (field === "duration") {
-        const cur = parseFloat(document.getElementById("cardioDurationInput").value) || 15;
-        setCardioField("duration", cur + delta);
-      } else if (field === "speed") {
-        const cur = parseFloat(document.getElementById("treadmillSpeedInput").value) || 5.0;
-        setCardioField("speed", cur + delta);
-      } else if (field === "incline") {
-        const cur = parseFloat(document.getElementById("treadmillInclineInput").value) || 0;
-        setCardioField("incline", cur + delta);
-      } else if (field === "level") {
-        const id = activeCardioModality === "cycle" ? "cycleLevelInput" : "ellipticalLevelInput";
-        const cur = parseFloat(document.getElementById(id).value) || 4;
-        setCardioField("level", cur + delta);
+        setCardioField("duration", (cardioDraftTotalMins || 15) + delta);
       }
     }
 
     function syncCardioInputsWithRx(splitName) {
       const tpl = NOTEBOOK_PPL_SPLITS[splitName] || NOTEBOOK_PPL_SPLITS["Push A"];
-      const rx = tpl.cardioRx;
-      if (!rx) return;
-      selectCardioModality(rx.modality || "treadmill");
-      setCardioPlacement(rx.placement || "Post-Workout Flush");
-      document.getElementById("cardioDurationInput").value = rx.duration || 15;
-      document.getElementById("treadmillSpeedInput").value = rx.speed || 5.0;
-      document.getElementById("treadmillInclineInput").value = rx.incline || 0;
-      document.getElementById("cycleLevelInput").value = rx.level || 5;
-      document.getElementById("cycleRpmInput").value = rx.rpm || 80;
-      document.getElementById("ellipticalLevelInput").value = rx.level || 4;
-      document.getElementById("ellipticalRampInput").value = rx.ramp || 2;
-      document.getElementById("cardioNotesInput").value = rx.notes || "";
-      const badge = document.getElementById("cardioNotebookRecBadge");
-      if (badge) {
-        badge.textContent = `Notebook Rx: ${rx.duration}m @ ${rx.speed} km/h, ${rx.incline}%`;
+      const rx = tpl.cardioRx || { modality: "treadmill", duration: 15, speed: 5.0, incline: 0, level: 5, rpm: 80, ramp: 3, placement: "Post-Workout Flush" };
+      activeCardioModality = rx.modality || "treadmill";
+      activeCardioPlacement = rx.placement || "Post-Workout Flush";
+      cardioDraftTotalMins = rx.duration || 15;
+      const durInp = document.getElementById("cardioDurationInput");
+      if (durInp) durInp.value = cardioDraftTotalMins;
+
+      if (activeCardioModality === "treadmill") {
+        cardioDraftSplits = [
+          { id: Date.now() + 1, mins: cardioDraftTotalMins, paramA: rx.speed || 5.0, paramB: rx.incline || 0 }
+        ];
+      } else if (activeCardioModality === "cycle") {
+        cardioDraftSplits = [
+          { id: Date.now() + 1, mins: cardioDraftTotalMins, paramA: rx.level || 5, paramB: rx.rpm || 80 }
+        ];
+      } else {
+        cardioDraftSplits = [
+          { id: Date.now() + 1, mins: cardioDraftTotalMins, paramA: rx.level || 4, paramB: rx.ramp || 3 }
+        ];
       }
+      setCardioPlacement(activeCardioPlacement);
+      ["treadmill", "cycle", "elliptical"].forEach(m => {
+        const btn = document.getElementById(`mod-${m}`);
+        if (btn) {
+          btn.className = m === activeCardioModality
+            ? "touch-btn py-3.5 px-4 rounded-2xl font-extrabold text-sm border flex items-center justify-center gap-2 theme-btn"
+            : "touch-btn py-3.5 px-4 rounded-2xl font-extrabold text-sm border flex items-center justify-center gap-2 bg-white text-slate-700 border-slate-300";
+        }
+      });
+      renderCardioSplitTable();
     }
 
     function applyNotebookCardioRx() {
       const day = ensureDayExists(activeDate);
       syncCardioInputsWithRx(day.splitName);
-      showToast(`Applied ${day.splitName} Notebook cardio prescription`);
+      showToast("Reset cardio table to single split");
     }
 
-    function calculateCardioBurnKcal(mod, duration, speed, incline, level) {
+    function calculateCardioBurnKcal(mod, duration, paramA, paramB, levelOverride) {
       const bw = state.baseline.bodyWeightKg || 103;
       let met = 3.8;
       if (mod === "treadmill") {
-        met = 2.8 + (speed * 0.45) + (incline * 0.32);
+        met = 2.8 + (paramA * 0.45) + (paramB * 0.32);
       } else if (mod === "cycle") {
-        met = 3.2 + (level * 0.42);
+        met = 3.2 + (paramA * 0.42) + Math.max(0, (paramB - 70) * 0.02);
       } else if (mod === "elliptical") {
-        met = 3.6 + (level * 0.45);
+        met = 3.6 + (paramA * 0.45) + (paramB * 0.15);
       }
       return Math.round((met * 3.5 * bw / 200) * duration);
     }
 
-    function logCardioSession() {
-      const day = ensureDayExists(activeDate);
-      const duration = Math.max(1, parseFloat(document.getElementById("cardioDurationInput").value) || 15);
-      const speed = parseFloat(document.getElementById("treadmillSpeedInput").value) || 5.0;
-      const incline = parseFloat(document.getElementById("treadmillInclineInput").value) || 0;
-      const cycleLevel = parseInt(document.getElementById("cycleLevelInput").value, 10) || 5;
-      const rpm = parseInt(document.getElementById("cycleRpmInput").value, 10) || 80;
-      const ellipLevel = parseInt(document.getElementById("ellipticalLevelInput").value, 10) || 4;
-      const ramp = parseInt(document.getElementById("ellipticalRampInput").value, 10) || 3;
-      const notes = document.getElementById("cardioNotesInput").value.trim();
+    function addCardioSplitRow() {
+      const allocated = cardioDraftSplits.reduce((acc, r) => acc + (parseFloat(r.mins) || 0), 0);
+      const rem = Math.max(3, Math.round((cardioDraftTotalMins - allocated) * 10) / 10);
+      const last = cardioDraftSplits[cardioDraftSplits.length - 1] || {
+        paramA: activeCardioModality === "treadmill" ? 5.0 : 5,
+        paramB: activeCardioModality === "treadmill" ? 2.0 : (activeCardioModality === "cycle" ? 80 : 3)
+      };
+      cardioDraftSplits.push({
+        id: Date.now() + Math.random(),
+        mins: rem,
+        paramA: last.paramA,
+        paramB: last.paramB
+      });
+      const newSum = cardioDraftSplits.reduce((acc, r) => acc + (parseFloat(r.mins) || 0), 0);
+      if (newSum > cardioDraftTotalMins) {
+        cardioDraftTotalMins = newSum;
+        const durInp = document.getElementById("cardioDurationInput");
+        if (durInp) durInp.value = cardioDraftTotalMins;
+      }
+      renderCardioSplitTable();
+    }
 
-      let setupSummary = "";
-      let levelUsed = cycleLevel;
-      if (activeCardioModality === "treadmill") {
-        const distKm = ((speed * duration) / 60).toFixed(2);
-        setupSummary = `${speed.toFixed(1)} km/h • ${incline}% Incline (~${distKm} km)`;
-      } else if (activeCardioModality === "cycle") {
-        setupSummary = `Level ${cycleLevel} Resistance • ${rpm} RPM`;
-      } else {
-        levelUsed = ellipLevel;
-        setupSummary = `Level ${ellipLevel} Resistance • Cross-Ramp ${ramp}`;
+    function removeCardioSplitRow(idx) {
+      if (cardioDraftSplits.length <= 1) {
+        showToast("At least 1 split row is required", "ℹ️");
+        return;
+      }
+      cardioDraftSplits.splice(idx, 1);
+      cardioDraftTotalMins = cardioDraftSplits.reduce((acc, r) => acc + (parseFloat(r.mins) || 0), 0);
+      const durInp = document.getElementById("cardioDurationInput");
+      if (durInp) durInp.value = cardioDraftTotalMins;
+      renderCardioSplitTable();
+    }
+
+    function updateCardioSplitRow(idx, field, val) {
+      const row = cardioDraftSplits[idx];
+      if (!row) return;
+      const num = parseFloat(val);
+      if (isNaN(num)) return;
+      if (field === "mins") {
+        row.mins = Math.max(0.5, Math.round(num * 10) / 10);
+        cardioDraftTotalMins = Math.round(cardioDraftSplits.reduce((acc, r) => acc + (parseFloat(r.mins) || 0), 0) * 10) / 10;
+        const durInp = document.getElementById("cardioDurationInput");
+        if (durInp) durInp.value = cardioDraftTotalMins;
+      } else if (field === "paramA") {
+        row.paramA = activeCardioModality === "treadmill"
+          ? Math.max(1.0, Math.round(num * 10) / 10)
+          : Math.max(1, Math.min(25, Math.round(num)));
+      } else if (field === "paramB") {
+        row.paramB = activeCardioModality === "treadmill"
+          ? Math.max(0, Math.round(num * 10) / 10)
+          : (activeCardioModality === "cycle" ? Math.max(30, Math.round(num)) : Math.max(0, Math.min(20, Math.round(num))));
+      }
+      renderCardioSplitTable();
+    }
+
+    function stepCardioSplitRow(idx, field, delta) {
+      const row = cardioDraftSplits[idx];
+      if (!row) return;
+      updateCardioSplitRow(idx, field, (parseFloat(row[field]) || 0) + delta);
+    }
+
+    function renderCardioSplitTable() {
+      const colA = document.getElementById("cardioColHeaderA");
+      const colB = document.getElementById("cardioColHeaderB");
+      if (colA && colB) {
+        if (activeCardioModality === "treadmill") {
+          colA.textContent = "Speed (km/h)";
+          colB.textContent = "Incline (%)";
+        } else if (activeCardioModality === "cycle") {
+          colA.textContent = "Resistance Level";
+          colB.textContent = "Cadence (RPM)";
+        } else {
+          colA.textContent = "Resistance Level";
+          colB.textContent = "Cross-Ramp Incline";
+        }
       }
 
-      const kcal = calculateCardioBurnKcal(activeCardioModality, duration, speed, incline, levelUsed);
+      const stepA = activeCardioModality === "treadmill" ? 0.5 : 1;
+      const stepB = activeCardioModality === "treadmill" ? 0.5 : (activeCardioModality === "cycle" ? 5 : 1);
+      const unitA = activeCardioModality === "treadmill" ? "km/h" : "lvl";
+      const unitB = activeCardioModality === "treadmill" ? "%" : (activeCardioModality === "cycle" ? "RPM" : "ramp");
+
+      let splitSumMins = 0;
+      let totalBurn = 0;
+
+      const tbody = document.getElementById("cardioSplitTableBody");
+      if (!tbody) return;
+
+      tbody.innerHTML = cardioDraftSplits.map((row, idx) => {
+        const m = parseFloat(row.mins) || 0;
+        const a = parseFloat(row.paramA) || 0;
+        const b = parseFloat(row.paramB) || 0;
+        splitSumMins += m;
+        const rowBurn = calculateCardioBurnKcal(activeCardioModality, m, a, b);
+        totalBurn += rowBurn;
+        const distInfo = activeCardioModality === "treadmill" ? ` • ${((a * m) / 60).toFixed(2)} km` : "";
+
+        return `
+          <tr class="bg-white">
+            <td class="py-3 px-3 font-extrabold text-slate-900 whitespace-nowrap">
+              <span class="px-2.5 py-1 rounded-lg theme-pill text-xs">Split ${idx + 1}</span>
+            </td>
+            <td class="py-3 px-3">
+              <div class="flex items-center gap-1.5">
+                <button onclick="stepCardioSplitRow(${idx}, 'mins', -1)" class="stepper-btn">−</button>
+                <input type="number" step="0.5" value="${m}" onchange="updateCardioSplitRow(${idx}, 'mins', this.value)" class="w-16 text-center font-extrabold text-sm bg-white border border-slate-300 rounded-xl py-2">
+                <button onclick="stepCardioSplitRow(${idx}, 'mins', 1)" class="stepper-btn">+</button>
+                <span class="text-xs font-bold text-slate-400">min</span>
+              </div>
+            </td>
+            <td class="py-3 px-3">
+              <div class="flex items-center gap-1.5">
+                <button onclick="stepCardioSplitRow(${idx}, 'paramA', -${stepA})" class="stepper-btn">−</button>
+                <input type="number" step="${stepA}" value="${a}" onchange="updateCardioSplitRow(${idx}, 'paramA', this.value)" class="w-16 text-center font-extrabold text-sm bg-white border border-slate-300 rounded-xl py-2">
+                <button onclick="stepCardioSplitRow(${idx}, 'paramA', ${stepA})" class="stepper-btn">+</button>
+                <span class="text-xs font-bold text-slate-400">${unitA}</span>
+              </div>
+            </td>
+            <td class="py-3 px-3">
+              <div class="flex items-center gap-1.5">
+                <button onclick="stepCardioSplitRow(${idx}, 'paramB', -${stepB})" class="stepper-btn">−</button>
+                <input type="number" step="${stepB}" value="${b}" onchange="updateCardioSplitRow(${idx}, 'paramB', this.value)" class="w-16 text-center font-extrabold text-sm bg-white border border-slate-300 rounded-xl py-2">
+                <button onclick="stepCardioSplitRow(${idx}, 'paramB', ${stepB})" class="stepper-btn">+</button>
+                <span class="text-xs font-bold text-slate-400">${unitB}</span>
+              </div>
+            </td>
+            <td class="py-3 px-3 font-extrabold text-emerald-700 whitespace-nowrap">
+              ~${rowBurn} kcal<span class="text-xs font-semibold text-slate-400">${distInfo}</span>
+            </td>
+            <td class="py-3 px-3 text-center">
+              <button onclick="removeCardioSplitRow(${idx})" class="px-2.5 py-1.5 text-xs font-extrabold bg-red-50 text-red-700 border border-red-200 rounded-lg hover:bg-red-100">✕</button>
+            </td>
+          </tr>
+        `;
+      }).join("");
+
+      const tallyEl = document.getElementById("cardioSplitTimeTally");
+      if (tallyEl) {
+        tallyEl.textContent = `Splits: ${Math.round(splitSumMins * 10) / 10} / ${cardioDraftTotalMins} mins`;
+      }
+      const burnEl = document.getElementById("cardioDraftBurnPreview");
+      if (burnEl) {
+        burnEl.textContent = `~${totalBurn} kcal`;
+      }
+    }
+
+    function logCardioSession() {
+      const day = ensureDayExists(activeDate);
+      let totalMins = 0;
+      let totalKcal = 0;
+      const splitDescriptions = [];
+
+      cardioDraftSplits.forEach((row, idx) => {
+        const m = Math.max(0.5, parseFloat(row.mins) || 0);
+        const a = parseFloat(row.paramA) || 0;
+        const b = parseFloat(row.paramB) || 0;
+        totalMins += m;
+        const k = calculateCardioBurnKcal(activeCardioModality, m, a, b);
+        totalKcal += k;
+        if (activeCardioModality === "treadmill") {
+          splitDescriptions.push(`Split ${idx + 1}: ${m}m @ ${a.toFixed(1)} km/h, ${b}% incline`);
+        } else if (activeCardioModality === "cycle") {
+          splitDescriptions.push(`Split ${idx + 1}: ${m}m @ Lvl ${a}, ${b} RPM`);
+        } else {
+          splitDescriptions.push(`Split ${idx + 1}: ${m}m @ Lvl ${a}, Ramp ${b}`);
+        }
+      });
+
+      const finalDuration = Math.round(totalMins * 10) / 10;
+      const setupSummary = splitDescriptions.join("  |  ");
 
       day.cardioSessions = day.cardioSessions || [];
       day.cardioSessions.push({
         id: Date.now(),
         modality: activeCardioModality,
         placement: activeCardioPlacement,
-        duration,
+        duration: finalDuration,
+        splits: JSON.parse(JSON.stringify(cardioDraftSplits)),
         setupSummary,
-        notes,
-        kcal
+        notes: "",
+        kcal: totalKcal
       });
 
       markRetroIfPast(day);
       saveState();
       renderAll();
-      showToast(`Logged ${duration}m ${activeCardioModality} (~${kcal} kcal burn)`);
+      showToast(`Logged ${finalDuration}m ${activeCardioModality} (${cardioDraftSplits.length} split[s] • ~${totalKcal} kcal)`);
     }
 
     function deleteCardioSession(id) {
@@ -2582,20 +3054,55 @@
       saveState();
       renderAll();
       if ((day.cardioSessions || []).length < beforeCount) {
-        showToast("Deleted cardio log entry", "🗑️");
+        showToast("Deleted cardio session", "🗑️");
       }
     }
 
     function clearAllCardioToday() {
       const day = ensureDayExists(activeDate);
       if (!day.cardioSessions || day.cardioSessions.length === 0) {
-        showToast("No cardio logs to clear for this date", "ℹ️");
+        showToast("No cardio sessions to clear", "ℹ️");
         return;
       }
       day.cardioSessions = [];
       saveState();
       renderAll();
-      showToast(`Cleared all cardio logs for ${activeDate}`, "🗑️");
+      showToast(`Cleared cardio sessions for ${activeDate}`, "🗑️");
+    }
+
+    // Override addCustomExerciseToDay to support Timed Hold mode selection
+    function addCustomExerciseToDay() {
+      const nameInput = document.getElementById("customExName");
+      const modeSelect = document.getElementById("customExMode");
+      const unitSelect = document.getElementById("customExUnit");
+      const name = nameInput.value.trim();
+      if (!name) {
+        showToast("Enter an exercise name first", "⚠️");
+        return;
+      }
+      const isTimed = modeSelect && modeSelect.value === "timed";
+      const unit = unitSelect ? (unitSelect.value || "kg") : "kg";
+      const day = ensureDayExists(activeDate);
+      day.exercises.push({
+        name,
+        note: "",
+        targetSets: 3,
+        targetReps: isTimed ? "45–60s" : "10–12",
+        isTimed,
+        unit,
+        sets: [{
+          w: isTimed ? 0 : (unit === "lbs" ? 50 : 20),
+          unit,
+          r: isTimed ? 45 : 12,
+          timeUnit: "sec",
+          done: false
+        }]
+      });
+      nameInput.value = "";
+      markRetroIfPast(day);
+      saveState();
+      renderAll();
+      showToast(`Added "${name}" (${isTimed ? "Timed Hold" : "Weight × Reps"})`);
     }
 
     // =========================================================================
@@ -2965,6 +3472,8 @@
       const m = getDayMetrics(day);
       const tpl = NOTEBOOK_PPL_SPLITS[day.splitName] || NOTEBOOK_PPL_SPLITS["Push A"];
 
+      applyDayColorTheme(day.splitName);
+
       document.getElementById("pplSelector").value = day.splitName;
       document.getElementById("workoutDayBadge").textContent = tpl.dayBadge;
       document.getElementById("pplDayTitle").textContent = tpl.title;
@@ -2981,81 +3490,121 @@
       if (navWorkoutPill) navWorkoutPill.textContent = `${m.completedSets}/${m.totalSets} sets`;
 
       const container = document.getElementById("workoutExercisesContainer");
-      container.innerHTML = day.exercises.map((ex, exIdx) => `
-        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
-          <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
-            <div>
-              <div class="flex items-center gap-2">
-                <span class="w-6 h-6 rounded-md bg-slate-900 text-white text-xs font-extrabold flex items-center justify-center">${exIdx + 1}</span>
-                <h4 class="text-sm font-extrabold text-slate-900">${ex.name}</h4>
-                <span class="px-2 py-0.5 text-[10px] font-bold bg-indigo-50 text-indigo-700 rounded border border-indigo-200">Notebook Target: ${ex.targetSets || 3}×${ex.targetReps || "10–12"}</span>
-              </div>
-              <p class="text-[11px] text-slate-500 mt-0.5 ml-8">${ex.note || ""}</p>
+      container.innerHTML = day.exercises.map((ex, exIdx) => {
+        const timed = isExerciseTimed(ex);
+        const reqBadges = timed ? getTimedExerciseRequirements(ex) : [];
+
+        return `
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200 space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="w-7 h-7 rounded-xl theme-btn text-xs font-extrabold flex items-center justify-center">${exIdx + 1}</span>
+              <h4 class="text-base font-extrabold text-slate-900">${ex.name}</h4>
+              <span class="px-2.5 py-0.5 text-xs font-extrabold rounded-lg theme-pill">${ex.targetSets || 3} × ${ex.targetReps || "10–12"}</span>
             </div>
-            <div class="flex items-center gap-1.5">
-              <button onclick="toggleExerciseAllUnits(${exIdx})" class="touch-btn px-2.5 py-1 text-xs font-bold bg-white border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-100" title="Toggle all sets of this exercise between kg and lbs">
-                All: ${ex.sets[0] ? ex.sets[0].unit.toUpperCase() : "KG"} ⇄
+
+            <div class="flex flex-wrap items-center gap-2">
+              <button onclick="toggleExerciseTimedMode(${exIdx})" class="touch-btn px-3 py-1.5 text-xs font-extrabold rounded-xl border ${timed ? 'bg-amber-100 text-amber-900 border-amber-300' : 'bg-white text-slate-700 border-slate-300'}" title="Switch between Weight × Reps and Timed Hold mode">
+                ${timed ? "⏱️ Timed Mode" : "🔢 Reps Mode"}
               </button>
-              <button onclick="addSetToExercise(${exIdx})" class="touch-btn px-3 py-1 text-xs font-extrabold bg-slate-900 text-white rounded-lg hover:bg-slate-800">
-                + Add Set
+              <button onclick="toggleExerciseAllUnits(${exIdx})" class="touch-btn px-3 py-1.5 text-xs font-extrabold bg-white border border-slate-300 text-slate-800 rounded-xl hover:bg-slate-100">
+                Unit: ${ex.sets[0] ? ex.sets[0].unit.toUpperCase() : "KG"} ⇄
+              </button>
+              <button onclick="addSetToExercise(${exIdx})" class="touch-btn px-4 py-1.5 text-xs font-extrabold theme-btn rounded-xl">
+                + Set
               </button>
             </div>
           </div>
 
-          <div class="space-y-2">
-            ${ex.sets.map((s, setIdx) => `
-              <div class="flex flex-wrap sm:flex-nowrap items-center gap-2 text-xs bg-white px-3 py-2 rounded-xl border ${s.done ? "border-emerald-400 bg-emerald-50/30" : "border-slate-200"}">
-                <span class="font-extrabold text-slate-500 w-14">Set ${setIdx + 1}</span>
+          ${timed ? `
+            <div class="flex flex-wrap items-center gap-1.5 pt-0.5">
+              <span class="text-[11px] font-extrabold uppercase text-amber-800 mr-1">Logging Requirements:</span>
+              ${reqBadges.map(b => `<span class="px-2.5 py-0.5 text-[11px] font-bold bg-amber-50 text-amber-900 border border-amber-200 rounded-lg">${b}</span>`).join("")}
+            </div>
+          ` : ""}
 
-                <!-- Custom Weight Input + Separate KG / LBS Toggle Button per Set -->
-                <div class="flex items-center gap-1">
-                  <input type="number" step="0.5" value="${s.w}" onchange="updateSetValue(${exIdx}, ${setIdx}, 'w', this.value)" class="w-20 px-2 py-1.5 border border-slate-300 rounded-lg text-center font-extrabold text-slate-900 text-sm focus:outline-none focus:border-slate-900">
-                  <button onclick="toggleSetUnit(${exIdx}, ${setIdx})" class="px-2.5 py-1.5 rounded-lg font-extrabold text-xs border transition ${s.unit === 'lbs' ? 'bg-amber-100 text-amber-900 border-amber-300' : 'bg-blue-100 text-blue-900 border-blue-300'}" title="Tap to toggle kg / lbs for this set">
-                    ${s.unit}
+          <div class="space-y-2.5">
+            ${ex.sets.map((s, setIdx) => {
+              const tUnit = s.timeUnit || "sec";
+              const timerKey = `${activeDate}_${exIdx}_${setIdx}`;
+              const runningTimer = activeHoldTimers[timerKey];
+
+              return `
+              <div class="flex flex-wrap items-center justify-between gap-3 bg-white px-4 py-3 rounded-2xl border ${s.done ? "border-emerald-400 bg-emerald-50/30" : "border-slate-200"}">
+                <span class="font-extrabold text-slate-700 text-sm w-14">Set ${setIdx + 1}</span>
+
+                <!-- Weight / Load Stepper + KG/LBS Toggle -->
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[11px] font-bold uppercase text-slate-400 mr-1">${timed ? "Load" : "Weight"}</span>
+                  <button onclick="stepSetField(${exIdx}, ${setIdx}, 'w', -2.5)" class="stepper-btn">−</button>
+                  <input type="number" step="0.5" value="${s.w}" onchange="updateSetValue(${exIdx}, ${setIdx}, 'w', this.value)" class="w-20 px-2 py-2 border border-slate-300 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                  <button onclick="stepSetField(${exIdx}, ${setIdx}, 'w', 2.5)" class="stepper-btn">+</button>
+                  <button onclick="toggleSetUnit(${exIdx}, ${setIdx})" class="px-3 py-2 rounded-xl font-extrabold text-xs border ${s.unit === 'lbs' ? 'bg-amber-100 text-amber-900 border-amber-300' : 'theme-pill'}">
+                    ${s.w === 0 && timed ? `BW (${s.unit})` : s.unit}
                   </button>
                 </div>
 
-                <span class="text-slate-400 font-bold">×</span>
+                <!-- Reps OR Timed Hold Duration Stepper -->
+                ${timed ? `
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-[11px] font-bold uppercase text-amber-700 mr-1">Hold</span>
+                    <button onclick="stepSetField(${exIdx}, ${setIdx}, 'r', ${tUnit === 'min' ? -1 : -5})" class="stepper-btn">−</button>
+                    <input type="number" value="${s.r}" onchange="updateSetValue(${exIdx}, ${setIdx}, 'r', this.value)" class="w-16 px-2 py-2 border border-amber-300 bg-amber-50/40 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                    <button onclick="stepSetField(${exIdx}, ${setIdx}, 'r', ${tUnit === 'min' ? 1 : 5})" class="stepper-btn">+</button>
+                    <button onclick="toggleSetTimeUnit(${exIdx}, ${setIdx})" class="px-3 py-2 rounded-xl font-extrabold text-xs bg-amber-100 text-amber-900 border border-amber-300">
+                      ${tUnit} ⇄
+                    </button>
+                    <button id="timer-btn-${exIdx}-${setIdx}" onclick="toggleLiveHoldTimer(${exIdx}, ${setIdx})" class="px-3 py-2 rounded-xl font-extrabold text-xs ${runningTimer ? 'bg-red-600 text-white' : 'bg-slate-900 text-white'}">
+                      ${runningTimer ? `⏸️ ${runningTimer.remaining}s` : `▶️ ${s.r}${tUnit === 'min' ? 'm' : 's'}`}
+                    </button>
+                  </div>
+                ` : `
+                  <div class="flex items-center gap-1.5">
+                    <span class="text-[11px] font-bold uppercase text-slate-400 mr-1">Reps</span>
+                    <button onclick="stepSetField(${exIdx}, ${setIdx}, 'r', -1)" class="stepper-btn">−</button>
+                    <input type="number" value="${s.r}" onchange="updateSetValue(${exIdx}, ${setIdx}, 'r', this.value)" class="w-16 px-2 py-2 border border-slate-300 rounded-xl text-center font-extrabold text-slate-900 text-sm focus:outline-none">
+                    <button onclick="stepSetField(${exIdx}, ${setIdx}, 'r', 1)" class="stepper-btn">+</button>
+                  </div>
+                `}
 
-                <!-- Rep Input for Each Set -->
-                <div class="flex items-center gap-1">
-                  <input type="number" value="${s.r}" onchange="updateSetValue(${exIdx}, ${setIdx}, 'r', this.value)" class="w-16 px-2 py-1.5 border border-slate-300 rounded-lg text-center font-extrabold text-slate-900 text-sm focus:outline-none focus:border-slate-900">
-                  <span class="text-slate-500 font-semibold">reps</span>
+                <!-- Oversized Mark Set Toggle + Remove -->
+                <div class="flex items-center gap-2 ml-auto">
+                  <label class="flex items-center gap-2 cursor-pointer select-none px-4 py-2 rounded-xl text-xs font-extrabold transition ${s.done ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}">
+                    <input type="checkbox" ${s.done ? "checked" : ""} onchange="updateSetValue(${exIdx}, ${setIdx}, 'done', this.checked)" class="rounded text-slate-900">
+                    <span>${s.done ? "✓ Done" : "Log Set"}</span>
+                  </label>
+                  <button onclick="removeSetFromExercise(${exIdx}, ${setIdx})" class="text-slate-300 hover:text-red-600 font-extrabold px-2 py-1 text-sm" title="Remove Set">✕</button>
                 </div>
-
-                <label class="ml-auto flex items-center gap-2 cursor-pointer select-none px-2.5 py-1 rounded-lg ${s.done ? 'bg-emerald-600 text-white font-extrabold' : 'bg-slate-100 text-slate-700 font-bold'}">
-                  <input type="checkbox" ${s.done ? "checked" : ""} onchange="updateSetValue(${exIdx}, ${setIdx}, 'done', this.checked)" class="rounded text-slate-900">
-                  <span>${s.done ? "✓ Logged" : "Mark Set"}</span>
-                </label>
-
-                <button onclick="removeSetFromExercise(${exIdx}, ${setIdx})" class="text-slate-300 hover:text-red-600 font-bold px-1.5" title="Remove Set">✕</button>
               </div>
-            `).join("")}
+              `;
+            }).join("")}
           </div>
         </div>
-      `).join("");
+        `;
+      }).join("");
 
-      // Cardio Sessions List
+      renderCardioSplitTable();
+
+      // Cardio Sessions List (Table-Formatted Session Cards)
       const cList = document.getElementById("cardioLogList");
       const sessions = day.cardioSessions || [];
       document.getElementById("cardioCountLabel").textContent = `${sessions.length} logged`;
       if (sessions.length === 0) {
-        cList.innerHTML = `<div class="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-400 text-center">No cardio logged for ${activeDate} yet. Select Treadmill, Cycle, or Elliptical above and tap "+ Log Cardio Session".</div>`;
+        cList.innerHTML = `<div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-400 text-center">No cardio sessions logged for ${activeDate}.</div>`;
       } else {
         cList.innerHTML = sessions.map(c => `
-          <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-2 text-xs">
-            <div>
-              <div class="flex items-center gap-1.5">
-                <span class="px-2 py-0.5 font-extrabold uppercase rounded bg-blue-600 text-white text-[10px]">${c.modality}</span>
-                <span class="font-bold text-slate-700">${c.placement}</span>
-                <span class="font-extrabold text-slate-900">• ${c.duration} mins</span>
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div class="space-y-1">
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="px-2.5 py-1 font-extrabold uppercase rounded-lg theme-btn text-[11px]">${c.modality}</span>
+                <span class="px-2.5 py-1 font-bold rounded-lg bg-white border border-slate-200 text-slate-700">${c.placement}</span>
+                <span class="font-extrabold text-slate-900 text-sm">Total: ${c.duration} mins</span>
               </div>
-              <p class="text-slate-700 font-semibold mt-1">${c.setupSummary}</p>
-              ${c.notes ? `<p class="text-[11px] text-slate-500 mt-0.5">${c.notes}</p>` : ""}
+              <p class="text-slate-700 font-semibold">${c.setupSummary}</p>
             </div>
             <div class="flex items-center gap-3">
-              <span class="font-extrabold text-emerald-700 whitespace-nowrap">~${c.kcal} kcal</span>
-              <button onclick="deleteCardioSession(${c.id})" class="px-2.5 py-1.5 text-xs font-extrabold bg-red-50 text-red-700 border border-red-200 rounded-lg hover:bg-red-100 whitespace-nowrap" title="Delete this cardio log">
+              <span class="px-3 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200 font-extrabold text-emerald-800 whitespace-nowrap">~${c.kcal} kcal</span>
+              <button onclick="deleteCardioSession(${c.id})" class="px-3 py-1.5 text-xs font-extrabold bg-red-50 text-red-700 border border-red-200 rounded-xl hover:bg-red-100 whitespace-nowrap">
                 🗑️ Delete
               </button>
             </div>
@@ -3629,7 +4178,7 @@
         .map(ex => {
           const doneSets = ex.sets.filter(s => s.done);
           if (doneSets.length === 0) return null;
-          const setStr = doneSets.map((s, idx) => `Set ${idx + 1}: ${s.w}${s.unit} × ${s.r}`).join(", ");
+          const timed = isExerciseTimed(ex); const setStr = doneSets.map((s, idx) => timed ? `Set ${idx + 1}: ${s.w > 0 ? s.w + s.unit + ' × ' : 'BW × '}${s.r}${s.timeUnit || 'sec'} hold` : `Set ${idx + 1}: ${s.w}${s.unit} × ${s.r}`).join(", ");
           return `- ${ex.name}: ${doneSets.length} sets (${setStr})`;
         })
         .filter(Boolean);
